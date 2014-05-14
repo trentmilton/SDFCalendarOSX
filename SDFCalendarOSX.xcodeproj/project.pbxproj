@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9603C5CB1921E4A1008689ED /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9603C5BC1921E4A1008689ED /* DateTools.bundle */; };
+		9603C5CC1921E4A1008689ED /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5C01921E4A1008689ED /* DTError.m */; };
+		9603C5CD1921E4A1008689ED /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5C21921E4A1008689ED /* DTTimePeriod.m */; };
+		9603C5CE1921E4A1008689ED /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5C41921E4A1008689ED /* DTTimePeriodChain.m */; };
+		9603C5CF1921E4A1008689ED /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5C61921E4A1008689ED /* DTTimePeriodCollection.m */; };
+		9603C5D01921E4A1008689ED /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5C81921E4A1008689ED /* DTTimePeriodGroup.m */; };
+		9603C5D11921E4A1008689ED /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5CA1921E4A1008689ED /* NSDate+DateTools.m */; };
+		9603C5D41922CF98008689ED /* SDFCalendarOSXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5D31922CF98008689ED /* SDFCalendarOSXView.m */; };
+		9603C5D71922CFE6008689ED /* SDFCalendarOSXMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5D61922CFE6008689ED /* SDFCalendarOSXMonthView.m */; };
+		9603C5DA1922D055008689ED /* SDFCalendarOSXCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5D91922D055008689ED /* SDFCalendarOSXCalendarViewController.m */; };
+		9603C5DD1922D14A008689ED /* SDFCalendarOSXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5DC1922D14A008689ED /* SDFCalendarOSXDayView.m */; };
+		9603C5E01922D1AF008689ED /* SDFCalendarOSXDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5DF1922D1AF008689ED /* SDFCalendarOSXDayViewController.m */; };
+		9603C5E31922D356008689ED /* SDFCalendarOSXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5E21922D356008689ED /* SDFCalendarOSXCalendarView.m */; };
+		9603C5E51922D3E0008689ED /* SDFCalendarOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5E41922D3E0008689ED /* SDFCalendarOSX.m */; };
+		9694FBB019222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9694FBAF19222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib */; };
+		9694FBB319222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9694FBB219222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib */; };
+		96ABC2C2191A1B2500DDDDE8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ABC2C1191A1B2500DDDDE8 /* Cocoa.framework */; };
+		96ABC2CC191A1B2500DDDDE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96ABC2CA191A1B2500DDDDE8 /* InfoPlist.strings */; };
+		96ABC2CE191A1B2500DDDDE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABC2CD191A1B2500DDDDE8 /* main.m */; };
+		96ABC2D2191A1B2500DDDDE8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 96ABC2D0191A1B2500DDDDE8 /* Credits.rtf */; };
+		96ABC2D5191A1B2500DDDDE8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABC2D4191A1B2500DDDDE8 /* AppDelegate.m */; };
+		96ABC2D8191A1B2500DDDDE8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96ABC2D6191A1B2500DDDDE8 /* MainMenu.xib */; };
+		96ABC2DA191A1B2500DDDDE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96ABC2D9191A1B2500DDDDE8 /* Images.xcassets */; };
+		96ABC2E1191A1B2500DDDDE8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ABC2E0191A1B2500DDDDE8 /* XCTest.framework */; };
+		96ABC2E2191A1B2500DDDDE8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ABC2C1191A1B2500DDDDE8 /* Cocoa.framework */; };
+		96ABC2EA191A1B2500DDDDE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96ABC2E8191A1B2500DDDDE8 /* InfoPlist.strings */; };
+		96ABC2EC191A1B2500DDDDE8 /* SDFCalendarOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABC2EB191A1B2500DDDDE8 /* SDFCalendarOSXTests.m */; };
+		96F0E6EF192032420032FB56 /* SDFCalendarOSXCalendar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96F0E6EE192032420032FB56 /* SDFCalendarOSXCalendar.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		96ABC2E3191A1B2500DDDDE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96ABC2B6191A1B2400DDDDE8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96ABC2BD191A1B2400DDDDE8;
+			remoteInfo = SDFCalendarOSX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9603C5BC1921E4A1008689ED /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
+		9603C5BD1921E4A1008689ED /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTools.h; sourceTree = "<group>"; };
+		9603C5BE1921E4A1008689ED /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
+		9603C5BF1921E4A1008689ED /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
+		9603C5C01921E4A1008689ED /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
+		9603C5C11921E4A1008689ED /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriod.h; sourceTree = "<group>"; };
+		9603C5C21921E4A1008689ED /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriod.m; sourceTree = "<group>"; };
+		9603C5C31921E4A1008689ED /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
+		9603C5C41921E4A1008689ED /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChain.m; sourceTree = "<group>"; };
+		9603C5C51921E4A1008689ED /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodCollection.h; sourceTree = "<group>"; };
+		9603C5C61921E4A1008689ED /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodCollection.m; sourceTree = "<group>"; };
+		9603C5C71921E4A1008689ED /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		9603C5C81921E4A1008689ED /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
+		9603C5C91921E4A1008689ED /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
+		9603C5CA1921E4A1008689ED /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
+		9603C5D21922CF98008689ED /* SDFCalendarOSXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXView.h; sourceTree = "<group>"; };
+		9603C5D31922CF98008689ED /* SDFCalendarOSXView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXView.m; sourceTree = "<group>"; };
+		9603C5D51922CFE6008689ED /* SDFCalendarOSXMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXMonthView.h; sourceTree = "<group>"; };
+		9603C5D61922CFE6008689ED /* SDFCalendarOSXMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXMonthView.m; sourceTree = "<group>"; };
+		9603C5D81922D055008689ED /* SDFCalendarOSXCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXCalendarViewController.h; sourceTree = "<group>"; };
+		9603C5D91922D055008689ED /* SDFCalendarOSXCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXCalendarViewController.m; sourceTree = "<group>"; };
+		9603C5DB1922D14A008689ED /* SDFCalendarOSXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXDayView.h; sourceTree = "<group>"; };
+		9603C5DC1922D14A008689ED /* SDFCalendarOSXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXDayView.m; sourceTree = "<group>"; };
+		9603C5DE1922D1AF008689ED /* SDFCalendarOSXDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXDayViewController.h; sourceTree = "<group>"; };
+		9603C5DF1922D1AF008689ED /* SDFCalendarOSXDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXDayViewController.m; sourceTree = "<group>"; };
+		9603C5E11922D356008689ED /* SDFCalendarOSXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXCalendarView.h; sourceTree = "<group>"; };
+		9603C5E21922D356008689ED /* SDFCalendarOSXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXCalendarView.m; sourceTree = "<group>"; };
+		9603C5E41922D3E0008689ED /* SDFCalendarOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSX.m; sourceTree = "<group>"; };
+		9603C5E61922D45B008689ED /* SDFCalendarOSXConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXConstants.h; sourceTree = "<group>"; };
+		9694FBAF19222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDFCalendarOSXCurrentMonthDay.xib; sourceTree = "<group>"; };
+		9694FBB219222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDFCalendarOSXNonCurrentMonthDay.xib; sourceTree = "<group>"; };
+		96ABC2BE191A1B2400DDDDE8 /* SDFCalendarOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDFCalendarOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96ABC2C1191A1B2500DDDDE8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		96ABC2C4191A1B2500DDDDE8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		96ABC2C5191A1B2500DDDDE8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		96ABC2C6191A1B2500DDDDE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		96ABC2C9191A1B2500DDDDE8 /* SDFCalendarOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDFCalendarOSX-Info.plist"; sourceTree = "<group>"; };
+		96ABC2CB191A1B2500DDDDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		96ABC2CD191A1B2500DDDDE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		96ABC2CF191A1B2500DDDDE8 /* SDFCalendarOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SDFCalendarOSX-Prefix.pch"; sourceTree = "<group>"; };
+		96ABC2D1191A1B2500DDDDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		96ABC2D3191A1B2500DDDDE8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		96ABC2D4191A1B2500DDDDE8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		96ABC2D7191A1B2500DDDDE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		96ABC2D9191A1B2500DDDDE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		96ABC2DF191A1B2500DDDDE8 /* SDFCalendarOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDFCalendarOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		96ABC2E0191A1B2500DDDDE8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		96ABC2E7191A1B2500DDDDE8 /* SDFCalendarOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SDFCalendarOSXTests-Info.plist"; sourceTree = "<group>"; };
+		96ABC2E9191A1B2500DDDDE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		96ABC2EB191A1B2500DDDDE8 /* SDFCalendarOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXTests.m; sourceTree = "<group>"; };
+		96F0E6EB192032280032FB56 /* SDFCalendarOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSX.h; sourceTree = "<group>"; };
+		96F0E6EE192032420032FB56 /* SDFCalendarOSXCalendar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDFCalendarOSXCalendar.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		96ABC2BB191A1B2400DDDDE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96ABC2C2191A1B2500DDDDE8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96ABC2DC191A1B2500DDDDE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96ABC2E2191A1B2500DDDDE8 /* Cocoa.framework in Frameworks */,
+				96ABC2E1191A1B2500DDDDE8 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9603C5BA1921E495008689ED /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				9603C5BB1921E4A1008689ED /* DateTools */,
+			);
+			name = Library;
+			path = SDFCalendarOSX;
+			sourceTree = "<group>";
+		};
+		9603C5BB1921E4A1008689ED /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				9603C5BC1921E4A1008689ED /* DateTools.bundle */,
+				9603C5BD1921E4A1008689ED /* DateTools.h */,
+				9603C5BE1921E4A1008689ED /* DTConstants.h */,
+				9603C5BF1921E4A1008689ED /* DTError.h */,
+				9603C5C01921E4A1008689ED /* DTError.m */,
+				9603C5C11921E4A1008689ED /* DTTimePeriod.h */,
+				9603C5C21921E4A1008689ED /* DTTimePeriod.m */,
+				9603C5C31921E4A1008689ED /* DTTimePeriodChain.h */,
+				9603C5C41921E4A1008689ED /* DTTimePeriodChain.m */,
+				9603C5C51921E4A1008689ED /* DTTimePeriodCollection.h */,
+				9603C5C61921E4A1008689ED /* DTTimePeriodCollection.m */,
+				9603C5C71921E4A1008689ED /* DTTimePeriodGroup.h */,
+				9603C5C81921E4A1008689ED /* DTTimePeriodGroup.m */,
+				9603C5C91921E4A1008689ED /* NSDate+DateTools.h */,
+				9603C5CA1921E4A1008689ED /* NSDate+DateTools.m */,
+			);
+			name = DateTools;
+			path = Library/DateTools/DateTools;
+			sourceTree = "<group>";
+		};
+		96ABC2B5191A1B2400DDDDE8 = {
+			isa = PBXGroup;
+			children = (
+				96ABC2C7191A1B2500DDDDE8 /* SDFCalendarOSX */,
+				96ABC2E5191A1B2500DDDDE8 /* SDFCalendarOSXTests */,
+				9603C5BA1921E495008689ED /* Library */,
+				96ABC2C0191A1B2400DDDDE8 /* Frameworks */,
+				96ABC2BF191A1B2400DDDDE8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		96ABC2BF191A1B2400DDDDE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2BE191A1B2400DDDDE8 /* SDFCalendarOSX.app */,
+				96ABC2DF191A1B2500DDDDE8 /* SDFCalendarOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96ABC2C0191A1B2400DDDDE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2C1191A1B2500DDDDE8 /* Cocoa.framework */,
+				96ABC2E0191A1B2500DDDDE8 /* XCTest.framework */,
+				96ABC2C3191A1B2500DDDDE8 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96ABC2C3191A1B2500DDDDE8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2C4191A1B2500DDDDE8 /* AppKit.framework */,
+				96ABC2C5191A1B2500DDDDE8 /* CoreData.framework */,
+				96ABC2C6191A1B2500DDDDE8 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		96ABC2C7191A1B2500DDDDE8 /* SDFCalendarOSX */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2D3191A1B2500DDDDE8 /* AppDelegate.h */,
+				96ABC2D4191A1B2500DDDDE8 /* AppDelegate.m */,
+				96ABC2D9191A1B2500DDDDE8 /* Images.xcassets */,
+				96ABC2D6191A1B2500DDDDE8 /* MainMenu.xib */,
+				96ABC2F5191A1B5600DDDDE8 /* SDFCalendarOSX */,
+				96ABC2C8191A1B2500DDDDE8 /* Supporting Files */,
+			);
+			path = SDFCalendarOSX;
+			sourceTree = "<group>";
+		};
+		96ABC2C8191A1B2500DDDDE8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2C9191A1B2500DDDDE8 /* SDFCalendarOSX-Info.plist */,
+				96ABC2CA191A1B2500DDDDE8 /* InfoPlist.strings */,
+				96ABC2CD191A1B2500DDDDE8 /* main.m */,
+				96ABC2CF191A1B2500DDDDE8 /* SDFCalendarOSX-Prefix.pch */,
+				96ABC2D0191A1B2500DDDDE8 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96ABC2E5191A1B2500DDDDE8 /* SDFCalendarOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2EB191A1B2500DDDDE8 /* SDFCalendarOSXTests.m */,
+				96ABC2E6191A1B2500DDDDE8 /* Supporting Files */,
+			);
+			path = SDFCalendarOSXTests;
+			sourceTree = "<group>";
+		};
+		96ABC2E6191A1B2500DDDDE8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				96ABC2E7191A1B2500DDDDE8 /* SDFCalendarOSXTests-Info.plist */,
+				96ABC2E8191A1B2500DDDDE8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96ABC2F5191A1B5600DDDDE8 /* SDFCalendarOSX */ = {
+			isa = PBXGroup;
+			children = (
+				96F0E6EB192032280032FB56 /* SDFCalendarOSX.h */,
+				9603C5E41922D3E0008689ED /* SDFCalendarOSX.m */,
+				96F0E6EE192032420032FB56 /* SDFCalendarOSXCalendar.xib */,
+				9603C5E11922D356008689ED /* SDFCalendarOSXCalendarView.h */,
+				9603C5E21922D356008689ED /* SDFCalendarOSXCalendarView.m */,
+				9603C5D81922D055008689ED /* SDFCalendarOSXCalendarViewController.h */,
+				9603C5D91922D055008689ED /* SDFCalendarOSXCalendarViewController.m */,
+				9603C5E61922D45B008689ED /* SDFCalendarOSXConstants.h */,
+				9694FBAF19222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib */,
+				9603C5DB1922D14A008689ED /* SDFCalendarOSXDayView.h */,
+				9603C5DC1922D14A008689ED /* SDFCalendarOSXDayView.m */,
+				9603C5DE1922D1AF008689ED /* SDFCalendarOSXDayViewController.h */,
+				9603C5DF1922D1AF008689ED /* SDFCalendarOSXDayViewController.m */,
+				9603C5D51922CFE6008689ED /* SDFCalendarOSXMonthView.h */,
+				9603C5D61922CFE6008689ED /* SDFCalendarOSXMonthView.m */,
+				9694FBB219222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib */,
+				9603C5D21922CF98008689ED /* SDFCalendarOSXView.h */,
+				9603C5D31922CF98008689ED /* SDFCalendarOSXView.m */,
+			);
+			path = SDFCalendarOSX;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		96ABC2BD191A1B2400DDDDE8 /* SDFCalendarOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96ABC2EF191A1B2500DDDDE8 /* Build configuration list for PBXNativeTarget "SDFCalendarOSX" */;
+			buildPhases = (
+				96ABC2BA191A1B2400DDDDE8 /* Sources */,
+				96ABC2BB191A1B2400DDDDE8 /* Frameworks */,
+				96ABC2BC191A1B2400DDDDE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDFCalendarOSX;
+			productName = SDFCalendarOSX;
+			productReference = 96ABC2BE191A1B2400DDDDE8 /* SDFCalendarOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		96ABC2DE191A1B2500DDDDE8 /* SDFCalendarOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96ABC2F2191A1B2500DDDDE8 /* Build configuration list for PBXNativeTarget "SDFCalendarOSXTests" */;
+			buildPhases = (
+				96ABC2DB191A1B2500DDDDE8 /* Sources */,
+				96ABC2DC191A1B2500DDDDE8 /* Frameworks */,
+				96ABC2DD191A1B2500DDDDE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				96ABC2E4191A1B2500DDDDE8 /* PBXTargetDependency */,
+			);
+			name = SDFCalendarOSXTests;
+			productName = SDFCalendarOSXTests;
+			productReference = 96ABC2DF191A1B2500DDDDE8 /* SDFCalendarOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		96ABC2B6191A1B2400DDDDE8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SDFCalendarOSX;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = shaydes.dsgn;
+				TargetAttributes = {
+					96ABC2DE191A1B2500DDDDE8 = {
+						TestTargetID = 96ABC2BD191A1B2400DDDDE8;
+					};
+				};
+			};
+			buildConfigurationList = 96ABC2B9191A1B2400DDDDE8 /* Build configuration list for PBXProject "SDFCalendarOSX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 96ABC2B5191A1B2400DDDDE8;
+			productRefGroup = 96ABC2BF191A1B2400DDDDE8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				96ABC2BD191A1B2400DDDDE8 /* SDFCalendarOSX */,
+				96ABC2DE191A1B2500DDDDE8 /* SDFCalendarOSXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		96ABC2BC191A1B2400DDDDE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96F0E6EF192032420032FB56 /* SDFCalendarOSXCalendar.xib in Resources */,
+				9603C5CB1921E4A1008689ED /* DateTools.bundle in Resources */,
+				96ABC2CC191A1B2500DDDDE8 /* InfoPlist.strings in Resources */,
+				96ABC2DA191A1B2500DDDDE8 /* Images.xcassets in Resources */,
+				9694FBB319222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib in Resources */,
+				9694FBB019222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib in Resources */,
+				96ABC2D2191A1B2500DDDDE8 /* Credits.rtf in Resources */,
+				96ABC2D8191A1B2500DDDDE8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96ABC2DD191A1B2500DDDDE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96ABC2EA191A1B2500DDDDE8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		96ABC2BA191A1B2400DDDDE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9603C5E01922D1AF008689ED /* SDFCalendarOSXDayViewController.m in Sources */,
+				9603C5CD1921E4A1008689ED /* DTTimePeriod.m in Sources */,
+				9603C5D41922CF98008689ED /* SDFCalendarOSXView.m in Sources */,
+				9603C5CE1921E4A1008689ED /* DTTimePeriodChain.m in Sources */,
+				9603C5DA1922D055008689ED /* SDFCalendarOSXCalendarViewController.m in Sources */,
+				9603C5CF1921E4A1008689ED /* DTTimePeriodCollection.m in Sources */,
+				9603C5DD1922D14A008689ED /* SDFCalendarOSXDayView.m in Sources */,
+				9603C5D71922CFE6008689ED /* SDFCalendarOSXMonthView.m in Sources */,
+				96ABC2D5191A1B2500DDDDE8 /* AppDelegate.m in Sources */,
+				9603C5D01921E4A1008689ED /* DTTimePeriodGroup.m in Sources */,
+				9603C5E51922D3E0008689ED /* SDFCalendarOSX.m in Sources */,
+				9603C5CC1921E4A1008689ED /* DTError.m in Sources */,
+				9603C5D11921E4A1008689ED /* NSDate+DateTools.m in Sources */,
+				96ABC2CE191A1B2500DDDDE8 /* main.m in Sources */,
+				9603C5E31922D356008689ED /* SDFCalendarOSXCalendarView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96ABC2DB191A1B2500DDDDE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96ABC2EC191A1B2500DDDDE8 /* SDFCalendarOSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		96ABC2E4191A1B2500DDDDE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96ABC2BD191A1B2400DDDDE8 /* SDFCalendarOSX */;
+			targetProxy = 96ABC2E3191A1B2500DDDDE8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		96ABC2CA191A1B2500DDDDE8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96ABC2CB191A1B2500DDDDE8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		96ABC2D0191A1B2500DDDDE8 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96ABC2D1191A1B2500DDDDE8 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		96ABC2D6191A1B2500DDDDE8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96ABC2D7191A1B2500DDDDE8 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		96ABC2E8191A1B2500DDDDE8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96ABC2E9191A1B2500DDDDE8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		96ABC2ED191A1B2500DDDDE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		96ABC2EE191A1B2500DDDDE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		96ABC2F0191A1B2500DDDDE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SDFCalendarOSX/SDFCalendarOSX-Prefix.pch";
+				INFOPLIST_FILE = "SDFCalendarOSX/SDFCalendarOSX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		96ABC2F1191A1B2500DDDDE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SDFCalendarOSX/SDFCalendarOSX-Prefix.pch";
+				INFOPLIST_FILE = "SDFCalendarOSX/SDFCalendarOSX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		96ABC2F3191A1B2500DDDDE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SDFCalendarOSX.app/Contents/MacOS/SDFCalendarOSX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SDFCalendarOSX/SDFCalendarOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SDFCalendarOSXTests/SDFCalendarOSXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		96ABC2F4191A1B2500DDDDE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SDFCalendarOSX.app/Contents/MacOS/SDFCalendarOSX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SDFCalendarOSX/SDFCalendarOSX-Prefix.pch";
+				INFOPLIST_FILE = "SDFCalendarOSXTests/SDFCalendarOSXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		96ABC2B9191A1B2400DDDDE8 /* Build configuration list for PBXProject "SDFCalendarOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96ABC2ED191A1B2500DDDDE8 /* Debug */,
+				96ABC2EE191A1B2500DDDDE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96ABC2EF191A1B2500DDDDE8 /* Build configuration list for PBXNativeTarget "SDFCalendarOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96ABC2F0191A1B2500DDDDE8 /* Debug */,
+				96ABC2F1191A1B2500DDDDE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96ABC2F2191A1B2500DDDDE8 /* Build configuration list for PBXNativeTarget "SDFCalendarOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96ABC2F3191A1B2500DDDDE8 /* Debug */,
+				96ABC2F4191A1B2500DDDDE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 96ABC2B6191A1B2400DDDDE8 /* Project object */;
+}

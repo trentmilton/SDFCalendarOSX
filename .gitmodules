@@ -1,0 +1,3 @@
+[submodule "SDFCalendarOSX/Library/DateTools"]
+	path = SDFCalendarOSX/Library/DateTools
+	url = https://github.com/MatthewYork/DateTools
