@@ -75,6 +75,9 @@
     NSDate *som = [self.currentMonthDate dateBySubtractingDays:self.currentMonthDate.day - 1];
     // What is the start of month day of the week (Sunday = 0)
     NSInteger somdow = som.weekday;
+    if (somdow == 1) {
+        somdow = 8;
+    }
     // Whatever it is is how far we want to go back from the start of the month to show on the first grid entry
     NSDate *currentGridDate = [som dateBySubtractingDays:somdow - 1];
     
