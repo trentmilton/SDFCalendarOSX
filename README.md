@@ -36,7 +36,7 @@ If you find anything wrong, please don't go and fork the project. Just add an is
 
 ## Credits
 
-Thanks to MatthewYork for the [DateTools](https://github.com/MatthewYork/DateTools) project. It made life a little bit easier when calculating the layout of the calendar days.
+Thanks to Matthew York for the [DateTools](https://github.com/MatthewYork/DateTools) project. It made life a little bit easier when calculating the layout of the calendar days.
 
 ## License
 
