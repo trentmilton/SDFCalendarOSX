@@ -32,12 +32,19 @@
 
 @protocol SDFCalendarOSXDayViewSelectionDelegate <NSObject>
 
+/**
+ *  Fired on a mouseClick.
+ */
 - (void) sdfCalendarOSXDayViewSelected;
 
 @end
 
+/**
+ *  Simple layout with just a day. Will let it's delegate know when a mouse click occurs on it.
+ */
 @interface SDFCalendarOSXDayView : SDFCalendarOSXView
 
+@property (nonatomic, weak) IBOutlet NSTextField *dayLabel;
 @property (nonatomic, strong) id <SDFCalendarOSXDayViewSelectionDelegate> delegate;
 
 @end

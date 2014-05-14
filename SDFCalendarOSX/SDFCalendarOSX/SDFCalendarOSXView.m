@@ -39,7 +39,9 @@
 @implementation SDFCalendarOSXView
 
 - (void) drawRect:(NSRect)dirtyRect {
-    // set any NSColor for filling, say white:
+    // Make sure we have something to fill the background with
+    if (!self.backgroundColour) _backgroundColour = [NSColor clearColor];
+    
     if (self.backgroundColour) {
         [self.backgroundColour setFill];
         NSRectFill(dirtyRect);

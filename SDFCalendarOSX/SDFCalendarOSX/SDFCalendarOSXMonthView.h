@@ -30,6 +30,9 @@
 
 #import "SDFCalendarOSXView.h"
 
+/**
+ *  Contains the day views for the previous, current and next month.
+ */
 @interface SDFCalendarOSXMonthView : SDFCalendarOSXView
 
 @end

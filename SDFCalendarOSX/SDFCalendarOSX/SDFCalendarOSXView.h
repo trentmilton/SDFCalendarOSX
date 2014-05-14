@@ -28,8 +28,16 @@
 //  Copyright (c) 2014 shaydes.dsgn. All rights reserved.
 //
 
+/**
+ *  Simple NSView used throughout the calendar.
+ */
 @interface SDFCalendarOSXView : NSView
 
+/**
+ *  Set the NSViews background colour. If nil colour provided NSClear will be used.
+ *
+ *  @param colour Colour to make the background, can be nil in which case the background will be NSClear.
+ */
 - (void) setBackgroundColour:(NSColor *)colour;
 
 @end

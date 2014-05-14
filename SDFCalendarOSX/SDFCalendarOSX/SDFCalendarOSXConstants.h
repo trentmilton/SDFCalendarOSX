@@ -31,10 +31,26 @@
 #define RGB(r, g, b)                                        [NSColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 #define GREY(v)                                             RGB(v, v, v)
 
+/**
+ *  The layout of the grid. This shouldn't really be touched unless you know what your doing. Especially the x value as this is the days.
+ */
 #define kSDFCalendarOSXGrid                                 CGPointMake(7,6)
 
+#warning TODO put this in
 #define kSDFCalendarOSXHeaderBackgroundColour               GREY(101)
+/**
+ *  Background colour for the current month.
+ */
 #define kSDFCalendarOSXCurrentMonthDayBackgroundColour      GREY(221)
+/**
+ *  Background colour for the previous & next months.
+ */
 #define kSDFCalendarOSXNonCurrentMonthDayBackgroundColour   GREY(191)
+/**
+ *  Selection colour for a day.
+ */
 #define kSDFCalendarOSXSelectedDayBackgroundColour          RGB(6,109,154)
+/**
+ *  Background colour for today. This will always be set unless selected which will override this.
+ */
 #define kSDFCalendarOSXTodayBackgroundColour                GREY(201)

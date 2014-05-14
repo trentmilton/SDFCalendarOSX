@@ -38,6 +38,9 @@
 
 @end
 
+/**
+ *  Handles display of the calendar. This will generate all the days and add them to a month NSView. The calendar handles previous / next month cycling and loading of the year / month header.
+ */
 @interface SDFCalendarOSXCalendarViewController : NSViewController <SDFCalendarOSXDaySelectionDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTextField *yearLabel;

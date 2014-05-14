@@ -32,6 +32,9 @@
 
 #import "SDFCalendarOSXCalendarViewController.h"
 
+/**
+ *  The starting point to get a calendar controller.
+ */
 @interface SDFCalendarOSX : NSObject
 
 + (SDFCalendarOSXCalendarViewController *) instance;

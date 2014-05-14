@@ -25,6 +25,7 @@ There are a few spots to go and modify the day cells and the calendar in general
 
 - Good autosizing of cells and month view
 - Fluid layout
+- Options: show current day highlight, show day header.
 
 ## Documentation
 
