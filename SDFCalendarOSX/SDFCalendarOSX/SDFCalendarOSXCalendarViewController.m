@@ -63,6 +63,7 @@
     [self setupMonth];
 }
 
+#warning TODO - Look for memory leak
 
 - (void) setupMonth {
     // Some warnings to make sure the below works as expected
@@ -71,6 +72,9 @@
     
     // Resets
     self.dayVCs = nil;
+    for (NSView *sv in [self.monthView.subviews copy]) {
+        [sv removeFromSuperview];
+    }
     
     NSDate *today = [NSDate new];
     today = [NSDate new];
@@ -120,7 +124,7 @@
             dayRect.origin = CGPointMake(dayX, dayY);
             // Finally set it back to the frame
             dvc.view.frame = dayRect;
-            [self.view addSubview:dvc.view];
+            [self.monthView addSubview:dvc.view];
             
             currentGridDate = [currentGridDate dateByAddingDays:1];
             [dvcs addObject:dvc];

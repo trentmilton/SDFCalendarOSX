@@ -33,16 +33,57 @@
 #import "SDFCalendarOSXDayView.h"
 #import "DateTools.h"
 
+static NSColor *kSDFCalendarOSXSelectedDayBackgroundColour;
+static NSColor *kSDFCalendarOSXTodayBackgroundColour;
+static NSColor *kSDFCalendarOSXCurrentMonthDayBackgroundColour;
+static NSColor *kSDFCalendarOSXNonCurrentMonthDayBackgroundColour;
+
 @interface SDFCalendarOSXDayViewController () <SDFCalendarOSXDayViewSelectionDelegate>
 
 @end
 
 @implementation SDFCalendarOSXDayViewController
 
++ (void) setSelectedDayBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXSelectedDayBackgroundColour = colour;
+}
+
++ (void) setTodayBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXTodayBackgroundColour = colour;
+}
+
++ (void) setCurrentMonthDayBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXCurrentMonthDayBackgroundColour = colour;
+}
+
++ (void) setNonCurrentMonthDayBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXNonCurrentMonthDayBackgroundColour = colour;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        if (!kSDFCalendarOSXSelectedDayBackgroundColour) {
+            kSDFCalendarOSXSelectedDayBackgroundColour = RGB(6,109,154);
+        }
+        if (!kSDFCalendarOSXTodayBackgroundColour) {
+            kSDFCalendarOSXTodayBackgroundColour = GREY(201);
+        }
+        if (!kSDFCalendarOSXCurrentMonthDayBackgroundColour) {
+            kSDFCalendarOSXCurrentMonthDayBackgroundColour = GREY(221);
+        }
+        if (!kSDFCalendarOSXNonCurrentMonthDayBackgroundColour) {
+            kSDFCalendarOSXNonCurrentMonthDayBackgroundColour = GREY(191);
+        }
+    }
+    return self;
+}
+
 - (void) awakeFromNib {
     ((SDFCalendarOSXDayView *)self.view).delegate = self;
     self.dayLabel.stringValue = @(self.date.day).stringValue;
     [self deselect];
+    
 }
 
 

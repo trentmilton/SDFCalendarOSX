@@ -38,6 +38,11 @@
 
 @interface SDFCalendarOSXDayViewController : NSViewController
 
++ (void) setSelectedDayBackgroundColour:(NSColor *)colour;
++ (void) setTodayBackgroundColour:(NSColor *)colour;
++ (void) setCurrentMonthDayBackgroundColour:(NSColor *)colour;
++ (void) setNonCurrentMonthDayBackgroundColour:(NSColor *)colour;
+
 @property (nonatomic, weak) IBOutlet NSTextField *dayLabel;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) id <SDFCalendarOSXDaySelectionDelegate> delegate;
