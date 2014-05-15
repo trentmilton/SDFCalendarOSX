@@ -43,6 +43,15 @@
 
 @implementation SDFCalendarOSXCalendarViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.currentMonthDayViewNibName = @"SDFCalendarOSXCurrentMonthDay";
+        self.nonCurrentMonthDayViewNibName = @"SDFCalendarOSXNonCurrentMonthDay";
+    }
+    return self;
+}
+
 - (void) awakeFromNib {
     
     // Background
@@ -87,7 +96,7 @@
     CGSize daySize = CGSizeMake(self.monthView.frame.size.width / kSDFCalendarOSXGrid.x, self.monthView.frame.size.height / kSDFCalendarOSXGrid.y);
     for (int y = 1; y <= kSDFCalendarOSXGrid.y; y ++) {
         for (int x = 0; x < kSDFCalendarOSXGrid.x; x ++) {
-            NSString *nibName = currentGridDate.month == self.currentMonthDate.month ? @"SDFCalendarOSXCurrentMonthDay" : @"SDFCalendarOSXNonCurrentMonthDay";
+            NSString *nibName = currentGridDate.month == self.currentMonthDate.month ? self.currentMonthDayViewNibName : self.nonCurrentMonthDayViewNibName;
             SDFCalendarOSXDayViewController *dvc = [[SDFCalendarOSXDayViewController alloc] initWithNibName:nibName bundle:nil];
             dvc.delegate = self;
             dvc.date = [currentGridDate copy];

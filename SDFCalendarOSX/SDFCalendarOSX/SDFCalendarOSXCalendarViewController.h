@@ -49,6 +49,8 @@
 @property (nonatomic, weak) IBOutlet NSButton *nextMonthButton;
 @property (nonatomic, strong) IBOutlet SDFCalendarOSXMonthView *monthView;
 @property (nonatomic, strong) id <SDFCalendarOSXCalendarDelegate> delegate;
+@property (nonatomic, strong) NSString *currentMonthDayViewNibName;
+@property (nonatomic, strong) NSString *nonCurrentMonthDayViewNibName;
 
 #pragma mark - Actions
 
