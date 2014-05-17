@@ -19,6 +19,8 @@ There are a few spots to go and modify the day cells and the calendar in general
 - Day selection: Look inside the SDFCalendarOSXDayViewController.m
 - Customise day NIBs: Set the currentMonthDayViewNibName & nonCurrentMonthDayViewNibName before awakeFromNib is called, otherwise the framework defaults are used.
 
+**Note:** A lot of the customisable ability lies in the SDFCalendarOSXCalendarViewController.h and SDFCalendarOSXDayViewController.h static setters. These need to be set BEFORE the nibs are loaded. In a window controller on initWithCoder is a good spot. an e.g. is setHeaderBackgroundColour.
+
 ## Other
 - There are 2 asserts in the SDFCalendarOSXCalendarViewController.m that enforce the NSView the day views are inserted into conform to the grid size. What this means is that if the grid is 7 x 5 (x and y) then the width of the NSView for months has to be divisible by 7 exactly and the height by 5. This just keeps things sane.
 
