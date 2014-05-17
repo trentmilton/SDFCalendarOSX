@@ -36,7 +36,9 @@
 static NSColor *kSDFCalendarOSXSelectedDayBackgroundColour;
 static NSColor *kSDFCalendarOSXTodayBackgroundColour;
 static NSColor *kSDFCalendarOSXCurrentMonthDayBackgroundColour;
+static NSColor *kSDFCalendarOSXCurrentMonthDayLabelColour;
 static NSColor *kSDFCalendarOSXNonCurrentMonthDayBackgroundColour;
+static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 
 @interface SDFCalendarOSXDayViewController () <SDFCalendarOSXDayViewSelectionDelegate>
 
@@ -56,8 +58,16 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayBackgroundColour;
     kSDFCalendarOSXCurrentMonthDayBackgroundColour = colour;
 }
 
++ (void) setCurrentMonthDayLabelColour:(NSColor *)colour {
+    kSDFCalendarOSXCurrentMonthDayLabelColour = colour;
+}
+
 + (void) setNonCurrentMonthDayBackgroundColour:(NSColor *)colour {
     kSDFCalendarOSXNonCurrentMonthDayBackgroundColour = colour;
+}
+
++ (void) setNonCurrentMonthDayLabelColour:(NSColor *)colour {
+    kSDFCalendarOSXNonCurrentMonthDayLabelColour = colour;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -84,6 +94,12 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayBackgroundColour;
     self.dayLabel.stringValue = @(self.date.day).stringValue;
     [self deselect];
     
+    // Labels
+    if (self.currentMonth && kSDFCalendarOSXCurrentMonthDayLabelColour) {
+        self.dayLabel.textColor = kSDFCalendarOSXCurrentMonthDayLabelColour;
+    } else if (!self.currentMonth && kSDFCalendarOSXNonCurrentMonthDayLabelColour) {
+        self.dayLabel.textColor = kSDFCalendarOSXNonCurrentMonthDayLabelColour;
+    }
 }
 
 
