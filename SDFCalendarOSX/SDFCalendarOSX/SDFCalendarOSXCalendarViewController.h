@@ -43,6 +43,7 @@
  */
 @interface SDFCalendarOSXCalendarViewController : NSViewController <SDFCalendarOSXDaySelectionDelegate>
 
+@property (nonatomic, weak) IBOutlet NSView *headerView;
 @property (nonatomic, weak) IBOutlet NSTextField *yearLabel;
 @property (nonatomic, weak) IBOutlet NSTextField *monthLabel;
 @property (nonatomic, weak) IBOutlet NSButton *previousMonthButton;
