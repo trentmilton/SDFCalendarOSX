@@ -33,6 +33,8 @@
 #import "SDFCalendarOSXMonthView.h"
 #import "DateTools.h"
 
+static NSColor *kSDFCalendarOSXHeaderBackgroundColour;
+
 @interface SDFCalendarOSXCalendarViewController ()
 
 @property (nonatomic, strong) NSArray *dayVCs;
@@ -42,6 +44,10 @@
 @end
 
 @implementation SDFCalendarOSXCalendarViewController
+
++ (void) setHeaderBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXHeaderBackgroundColour = colour;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -61,6 +67,10 @@
     self.currentMonthDate = [self startOfMonthDate:[NSDate new]];
     
     [self setupMonth];
+    
+    if (kSDFCalendarOSXHeaderBackgroundColour) {
+        [self.headerView setBackgroundColour:kSDFCalendarOSXHeaderBackgroundColour];
+    }
 }
 
 #warning TODO - Look for memory leak

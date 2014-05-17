@@ -31,6 +31,7 @@
 @class SDFCalendarOSXMonthView;
 
 #import "SDFCalendarOSXDayViewController.h"
+#import "SDFCalendarOSXView.h"
 
 @protocol SDFCalendarOSXCalendarDelegate <NSObject>
 
@@ -43,7 +44,7 @@
  */
 @interface SDFCalendarOSXCalendarViewController : NSViewController <SDFCalendarOSXDaySelectionDelegate>
 
-@property (nonatomic, weak) IBOutlet NSView *headerView;
+@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *headerView;
 @property (nonatomic, weak) IBOutlet NSTextField *yearLabel;
 @property (nonatomic, weak) IBOutlet NSTextField *monthLabel;
 @property (nonatomic, weak) IBOutlet NSButton *previousMonthButton;
@@ -52,6 +53,8 @@
 @property (nonatomic, strong) id <SDFCalendarOSXCalendarDelegate> delegate;
 @property (nonatomic, strong) NSString *currentMonthDayViewNibName;
 @property (nonatomic, strong) NSString *nonCurrentMonthDayViewNibName;
+
++ (void) setHeaderBackgroundColour:(NSColor *)colour;
 
 #pragma mark - Actions
 
