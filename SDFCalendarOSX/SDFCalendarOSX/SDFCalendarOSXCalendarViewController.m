@@ -34,6 +34,10 @@
 #import "DateTools.h"
 
 static NSColor *kSDFCalendarOSXHeaderBackgroundColour;
+static NSColor *kSDFCalendarOSXHeaderLabelColour;
+static NSColor *kSDFCalendarOSXMonthDayNamesBackgroundColour;
+static NSColor *kSDFCalendarOSXMonthDayNamesLabelColour;
+
 
 @interface SDFCalendarOSXCalendarViewController ()
 
@@ -47,6 +51,18 @@ static NSColor *kSDFCalendarOSXHeaderBackgroundColour;
 
 + (void) setHeaderBackgroundColour:(NSColor *)colour {
     kSDFCalendarOSXHeaderBackgroundColour = colour;
+}
+
++ (void) setHeaderLabelColour:(NSColor *)colour {
+    kSDFCalendarOSXHeaderLabelColour = colour;
+}
+
++ (void) setMonthDayNamesBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXMonthDayNamesBackgroundColour = colour;
+}
+
++ (void) setMonthDayNamesLabelColour:(NSColor *)colour {
+    kSDFCalendarOSXMonthDayNamesLabelColour = colour;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -66,11 +82,32 @@ static NSColor *kSDFCalendarOSXHeaderBackgroundColour;
     
     self.currentMonthDate = [self startOfMonthDate:[NSDate new]];
     
-    [self setupMonth];
-    
-    if (kSDFCalendarOSXHeaderBackgroundColour) {
-        [self.headerView setBackgroundColour:kSDFCalendarOSXHeaderBackgroundColour];
+    // Customisation
+    if (self.headerView) {
+        if (kSDFCalendarOSXHeaderBackgroundColour) {
+            [self.headerView setBackgroundColour:kSDFCalendarOSXHeaderBackgroundColour];
+        }
+        if (kSDFCalendarOSXHeaderLabelColour) {
+            self.yearLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
+            self.monthLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
+        }
     }
+    
+    if (self.monthDayNamesView) {
+        if (kSDFCalendarOSXMonthDayNamesBackgroundColour) {
+            [self.monthDayNamesView setBackgroundColour:kSDFCalendarOSXMonthDayNamesBackgroundColour];
+        }
+        // Loop through and set all the label colours
+        if (kSDFCalendarOSXMonthDayNamesLabelColour) {
+            for (id sv in self.monthDayNamesView.subviews) {
+                if ([sv isKindOfClass:[NSTextField class]]) {
+                    ((NSTextView *)sv).textColor = kSDFCalendarOSXMonthDayNamesLabelColour;
+                }
+            }
+        }
+    }
+    
+    [self setupMonth];
 }
 
 #warning TODO - Look for memory leak

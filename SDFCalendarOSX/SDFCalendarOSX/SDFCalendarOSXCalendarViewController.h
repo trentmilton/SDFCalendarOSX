@@ -49,12 +49,19 @@
 @property (nonatomic, weak) IBOutlet NSTextField *monthLabel;
 @property (nonatomic, weak) IBOutlet NSButton *previousMonthButton;
 @property (nonatomic, weak) IBOutlet NSButton *nextMonthButton;
-@property (nonatomic, strong) IBOutlet SDFCalendarOSXMonthView *monthView;
+@property (nonatomic, weak) IBOutlet SDFCalendarOSXMonthView *monthView;
+/**
+ *  Should be an NSView with labels inside it. Anything else and the customisations won't be applied to the labels.
+ */
+@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *monthDayNamesView;
 @property (nonatomic, strong) id <SDFCalendarOSXCalendarDelegate> delegate;
 @property (nonatomic, strong) NSString *currentMonthDayViewNibName;
 @property (nonatomic, strong) NSString *nonCurrentMonthDayViewNibName;
 
 + (void) setHeaderBackgroundColour:(NSColor *)colour;
++ (void) setHeaderLabelColour:(NSColor *)colour;
++ (void) setMonthDayNamesBackgroundColour:(NSColor *)colour;
++ (void) setMonthDayNamesLabelColour:(NSColor *)colour;
 
 #pragma mark - Actions
 
