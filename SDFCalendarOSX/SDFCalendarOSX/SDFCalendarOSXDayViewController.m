@@ -33,6 +33,7 @@
 #import "SDFCalendarOSXDayView.h"
 #import "DateTools.h"
 
+static NSFont *kSDFCalendarOSXsetDayFontAndSize;
 static NSColor *kSDFCalendarOSXSelectedDayBackgroundColour;
 static NSColor *kSDFCalendarOSXTodayBackgroundColour;
 static NSColor *kSDFCalendarOSXCurrentMonthDayBackgroundColour;
@@ -45,6 +46,10 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 @end
 
 @implementation SDFCalendarOSXDayViewController
+
++ (void) setDayFontAndSize:(NSFont *)font {
+    kSDFCalendarOSXsetDayFontAndSize = font;
+}
 
 + (void) setSelectedDayBackgroundColour:(NSColor *)colour {
     kSDFCalendarOSXSelectedDayBackgroundColour = colour;
@@ -91,6 +96,13 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 
 - (void) awakeFromNib {
     ((SDFCalendarOSXDayView *)self.view).delegate = self;
+    
+    // Customisation
+    if (kSDFCalendarOSXsetDayFontAndSize) {
+        self.dayLabel.font = kSDFCalendarOSXsetDayFontAndSize;
+        [self.view setNeedsDisplay:YES];
+    }
+    
     self.dayLabel.stringValue = @(self.date.day).stringValue;
     [self deselect];
     

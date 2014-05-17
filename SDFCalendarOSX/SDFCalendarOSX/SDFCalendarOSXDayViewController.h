@@ -42,8 +42,9 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) id <SDFCalendarOSXDaySelectionDelegate> delegate;
 @property (nonatomic) BOOL currentMonth;
-#warning TODO add font option and size for day cell
+
 #warning TODO change the colours to attach to views (Selected, current day)
++ (void) setDayFontAndSize:(NSFont *)font;
 + (void) setSelectedDayBackgroundColour:(NSColor *)colour;
 + (void) setTodayBackgroundColour:(NSColor *)colour;
 + (void) setCurrentMonthDayBackgroundColour:(NSColor *)colour;

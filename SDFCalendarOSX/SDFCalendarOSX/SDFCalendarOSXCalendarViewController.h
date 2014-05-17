@@ -55,10 +55,10 @@
  */
 @property (nonatomic, weak) IBOutlet SDFCalendarOSXView *monthDayNamesView;
 @property (nonatomic, strong) id <SDFCalendarOSXCalendarDelegate> delegate;
-@property (nonatomic, strong) NSString *currentMonthDayViewNibName;
-@property (nonatomic, strong) NSString *nonCurrentMonthDayViewNibName;
+
 #warning TODO add font option and size for labels
 #warning TODO add font option and size for month day name cell
++ (void) setCalendarDayNibName:(NSString *)nibName;
 + (void) setHeaderBackgroundColour:(NSColor *)colour;
 + (void) setHeaderLabelColour:(NSColor *)colour;
 + (void) setMonthDayNamesBackgroundColour:(NSColor *)colour;

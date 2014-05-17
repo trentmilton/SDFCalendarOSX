@@ -21,8 +21,7 @@
 		9603C5E01922D1AF008689ED /* SDFCalendarOSXDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5DF1922D1AF008689ED /* SDFCalendarOSXDayViewController.m */; };
 		9603C5E31922D356008689ED /* SDFCalendarOSXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5E21922D356008689ED /* SDFCalendarOSXCalendarView.m */; };
 		9603C5E51922D3E0008689ED /* SDFCalendarOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 9603C5E41922D3E0008689ED /* SDFCalendarOSX.m */; };
-		9694FBB019222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9694FBAF19222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib */; };
-		9694FBB319222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9694FBB219222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib */; };
+		9655B77B192828E4008B8653 /* SDFCalendarOSXCalendarDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9655B77A192828E4008B8653 /* SDFCalendarOSXCalendarDay.xib */; };
 		96ABC2C2191A1B2500DDDDE8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ABC2C1191A1B2500DDDDE8 /* Cocoa.framework */; };
 		96ABC2CC191A1B2500DDDDE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96ABC2CA191A1B2500DDDDE8 /* InfoPlist.strings */; };
 		96ABC2CE191A1B2500DDDDE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96ABC2CD191A1B2500DDDDE8 /* main.m */; };
@@ -77,8 +76,7 @@
 		9603C5E21922D356008689ED /* SDFCalendarOSXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSXCalendarView.m; sourceTree = "<group>"; };
 		9603C5E41922D3E0008689ED /* SDFCalendarOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFCalendarOSX.m; sourceTree = "<group>"; };
 		9603C5E61922D45B008689ED /* SDFCalendarOSXConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFCalendarOSXConstants.h; sourceTree = "<group>"; };
-		9694FBAF19222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDFCalendarOSXCurrentMonthDay.xib; sourceTree = "<group>"; };
-		9694FBB219222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDFCalendarOSXNonCurrentMonthDay.xib; sourceTree = "<group>"; };
+		9655B77A192828E4008B8653 /* SDFCalendarOSXCalendarDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDFCalendarOSXCalendarDay.xib; sourceTree = "<group>"; };
 		96ABC2BE191A1B2400DDDDE8 /* SDFCalendarOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDFCalendarOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96ABC2C1191A1B2500DDDDE8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		96ABC2C4191A1B2500DDDDE8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -244,19 +242,18 @@
 				96F0E6EB192032280032FB56 /* SDFCalendarOSX.h */,
 				9603C5E41922D3E0008689ED /* SDFCalendarOSX.m */,
 				96F0E6EE192032420032FB56 /* SDFCalendarOSXCalendar.xib */,
+				9655B77A192828E4008B8653 /* SDFCalendarOSXCalendarDay.xib */,
 				9603C5E11922D356008689ED /* SDFCalendarOSXCalendarView.h */,
 				9603C5E21922D356008689ED /* SDFCalendarOSXCalendarView.m */,
 				9603C5D81922D055008689ED /* SDFCalendarOSXCalendarViewController.h */,
 				9603C5D91922D055008689ED /* SDFCalendarOSXCalendarViewController.m */,
 				9603C5E61922D45B008689ED /* SDFCalendarOSXConstants.h */,
-				9694FBAF19222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib */,
 				9603C5DB1922D14A008689ED /* SDFCalendarOSXDayView.h */,
 				9603C5DC1922D14A008689ED /* SDFCalendarOSXDayView.m */,
 				9603C5DE1922D1AF008689ED /* SDFCalendarOSXDayViewController.h */,
 				9603C5DF1922D1AF008689ED /* SDFCalendarOSXDayViewController.m */,
 				9603C5D51922CFE6008689ED /* SDFCalendarOSXMonthView.h */,
 				9603C5D61922CFE6008689ED /* SDFCalendarOSXMonthView.m */,
-				9694FBB219222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib */,
 				9603C5D21922CF98008689ED /* SDFCalendarOSXView.h */,
 				9603C5D31922CF98008689ED /* SDFCalendarOSXView.m */,
 			);
@@ -343,9 +340,8 @@
 				96F0E6EF192032420032FB56 /* SDFCalendarOSXCalendar.xib in Resources */,
 				9603C5CB1921E4A1008689ED /* DateTools.bundle in Resources */,
 				96ABC2CC191A1B2500DDDDE8 /* InfoPlist.strings in Resources */,
+				9655B77B192828E4008B8653 /* SDFCalendarOSXCalendarDay.xib in Resources */,
 				96ABC2DA191A1B2500DDDDE8 /* Images.xcassets in Resources */,
-				9694FBB319222522000DF9AE /* SDFCalendarOSXNonCurrentMonthDay.xib in Resources */,
-				9694FBB019222171000DF9AE /* SDFCalendarOSXCurrentMonthDay.xib in Resources */,
 				96ABC2D2191A1B2500DDDDE8 /* Credits.rtf in Resources */,
 				96ABC2D8191A1B2500DDDDE8 /* MainMenu.xib in Resources */,
 			);
