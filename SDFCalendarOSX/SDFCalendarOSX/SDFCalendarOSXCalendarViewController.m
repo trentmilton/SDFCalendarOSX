@@ -36,9 +36,10 @@
 static NSString *kSDFCalendarOSXCalendarDayNibName = @"SDFCalendarOSXCalendarDay";
 static NSColor *kSDFCalendarOSXHeaderBackgroundColour;
 static NSColor *kSDFCalendarOSXHeaderLabelColour;
+static NSFont *kSDFCalendarOSXHeaderFont;
 static NSColor *kSDFCalendarOSXMonthDayNamesBackgroundColour;
 static NSColor *kSDFCalendarOSXMonthDayNamesLabelColour;
-
+static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 
 @interface SDFCalendarOSXCalendarViewController ()
 
@@ -62,12 +63,20 @@ static NSColor *kSDFCalendarOSXMonthDayNamesLabelColour;
     kSDFCalendarOSXHeaderLabelColour = colour;
 }
 
++ (void) setHeaderFontAndSize:(NSFont *)font {
+    kSDFCalendarOSXHeaderFont = font;
+}
+
 + (void) setMonthDayNamesBackgroundColour:(NSColor *)colour {
     kSDFCalendarOSXMonthDayNamesBackgroundColour = colour;
 }
 
 + (void) setMonthDayNamesLabelColour:(NSColor *)colour {
     kSDFCalendarOSXMonthDayNamesLabelColour = colour;
+}
+
++ (void) setMonthDayNamesFont:(NSFont *)font {
+    kSDFCalendarOSXMonthDayNamesFont = font;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -94,17 +103,23 @@ static NSColor *kSDFCalendarOSXMonthDayNamesLabelColour;
             self.yearLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
             self.monthLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
         }
+        if (kSDFCalendarOSXHeaderFont) {
+            self.yearLabel.font = kSDFCalendarOSXHeaderFont;
+            self.monthLabel.font = kSDFCalendarOSXHeaderFont;
+        }
     }
     
     if (self.monthDayNamesView) {
         if (kSDFCalendarOSXMonthDayNamesBackgroundColour) {
             [self.monthDayNamesView setBackgroundColour:kSDFCalendarOSXMonthDayNamesBackgroundColour];
         }
-        // Loop through and set all the label colours
-        if (kSDFCalendarOSXMonthDayNamesLabelColour) {
-            for (id sv in self.monthDayNamesView.subviews) {
-                if ([sv isKindOfClass:[NSTextField class]]) {
+        for (id sv in self.monthDayNamesView.subviews) {
+            if ([sv isKindOfClass:[NSTextField class]]) {
+                if (kSDFCalendarOSXMonthDayNamesLabelColour) {
                     ((NSTextView *)sv).textColor = kSDFCalendarOSXMonthDayNamesLabelColour;
+                }
+                if (kSDFCalendarOSXHeaderFont) {
+                    ((NSTextView *)sv).font = kSDFCalendarOSXHeaderFont;
                 }
             }
         }
