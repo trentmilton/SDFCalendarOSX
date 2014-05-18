@@ -6,9 +6,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDFCalendarOSXDayViewController">
             <connections>
-                <outlet property="currentDayView" destination="HNF-XC-D94" id="JJ9-LS-jPu"/>
                 <outlet property="dayLabel" destination="LZZ-d6-s3X" id="c5U-Pc-Eux"/>
-                <outlet property="selectionView" destination="Xzh-kv-KSU" id="Z0b-3Y-S6d"/>
+                <outlet property="selectedDayHighlightView" destination="Xzh-kv-KSU" id="h5d-y6-AKf"/>
+                <outlet property="todayHighlightView" destination="HNF-XC-D94" id="Qf3-g0-kEe"/>
                 <outlet property="view" destination="kWD-sf-qyO" id="khR-ui-jft"/>
             </connections>
         </customObject>
@@ -18,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-4N-rKg" customClass="SDFCalendarOSXView">
+                    <rect key="frame" x="60" y="60" width="10" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNF-XC-D94" userLabel="Current Day View" customClass="SDFCalendarOSXView">
                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

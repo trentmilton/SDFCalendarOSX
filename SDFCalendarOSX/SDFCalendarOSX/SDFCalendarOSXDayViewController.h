@@ -40,13 +40,20 @@
 @interface SDFCalendarOSXDayViewController : NSViewController
 
 @property (nonatomic, weak) IBOutlet NSTextField *dayLabel;
-@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *currentDayView;
-@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *selectionView;
+@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *todayHighlightView;
+@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *selectedDayHighlightView;
+/**
+ *  Used to show that there is more information for a given day if you are using the calendar for an event based app, e.g. appointments or workouts might be present for this date. Default is to not show and must be called after the nib has loaded.
+ */
+@property (nonatomic, weak) IBOutlet SDFCalendarOSXView *dayEventsHighlightView;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) id <SDFCalendarOSXDaySelectionDelegate> delegate;
 @property (nonatomic) BOOL currentMonth;
 @property (nonatomic, readonly) BOOL selected;
-
+/**
+ *  When set this will cause the dayEventsHighlightView to show (YES) or hide (NO).
+ */
+@property (nonatomic) BOOL hasDayEvents;
 /**
  *  Font and size when day cell is not selected (Default state).
  *
@@ -58,11 +65,21 @@
  *
  *  This requires that setDayFontAndSize has been also set (in order for it be reverted to).
  *
- *  @param font Font and size to apply on selection
+ *  @param font Font and size to apply on selection.
  */
 + (void) setSelectedDayFontAndSize:(NSFont *)font;
+/**
+ *  When set this will fill the attached selectionView.
+ *
+ *  @param colour Colour to fill the selectionView with
+ */
 + (void) setSelectedDayBackgroundColour:(NSColor *)colour;
 + (void) setTodayBackgroundColour:(NSColor *)colour;
+/**
+ *  When set this will fill the attached currentDayView.
+ *
+ *  @param colour Colour to fill the currentDayView with.
+ */
 + (void) setCurrentMonthDayBackgroundColour:(NSColor *)colour;
 + (void) setCurrentMonthDayLabelColour:(NSColor *)colour;
 + (void) setNonCurrentMonthDayBackgroundColour:(NSColor *)colour;
