@@ -45,8 +45,22 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) id <SDFCalendarOSXDaySelectionDelegate> delegate;
 @property (nonatomic) BOOL currentMonth;
+@property (nonatomic, readonly) BOOL selected;
 
+/**
+ *  Font and size when day cell is not selected (Default state).
+ *
+ *  @param font Font and size to apply by default when not selected.
+ */
 + (void) setDayFontAndSize:(NSFont *)font;
+/**
+ *  Font and size when day cell selected.
+ *
+ *  This requires that setDayFontAndSize has been also set (in order for it be reverted to).
+ *
+ *  @param font Font and size to apply on selection
+ */
++ (void) setSelectedDayFontAndSize:(NSFont *)font;
 + (void) setSelectedDayBackgroundColour:(NSColor *)colour;
 + (void) setTodayBackgroundColour:(NSColor *)colour;
 + (void) setCurrentMonthDayBackgroundColour:(NSColor *)colour;

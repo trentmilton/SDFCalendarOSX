@@ -44,7 +44,6 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 @interface SDFCalendarOSXCalendarViewController ()
 
 @property (nonatomic, strong) NSArray *dayVCs;
-@property (nonatomic, strong) SDFCalendarOSXDayViewController *currentDayVC;
 @property (nonatomic, strong) NSDate *currentMonthDate;
 
 @end
@@ -79,7 +78,7 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
     kSDFCalendarOSXMonthDayNamesFont = font;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
@@ -173,8 +172,8 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
             BOOL noCurrentDaySetAndToday = !self.currentDayVC && [currentGridDate isToday];
             BOOL currentDaySetAndDateMatches = self.currentDayVC && [self.currentDayVC.date isEqualToDate:currentGridDate];
             if (noCurrentDaySetAndToday || currentDaySetAndDateMatches) {
-                self.currentDayVC = dvc;
-                [dvc select];
+                _currentDayVC = dvc;
+                [_currentDayVC select];
             }
             
             CGRect dayRect = dvc.view.frame;
@@ -220,7 +219,7 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
     
     if (dayViewController.currentMonth) {
         [self.currentDayVC deselect];
-        self.currentDayVC = dayViewController;
+        _currentDayVC = dayViewController;
         [self.currentDayVC select];
     } else {
         // Reset the date to start of the appropriate month
@@ -228,12 +227,11 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
         // Set the date to selected
         [self setupMonth];
         
-        
         // Search through the new VCs to select the date from the previous / next month
         for (SDFCalendarOSXDayViewController *dvc in self.dayVCs) {
             if ([dvc.date isEqualToDate:selectedDate]) {
                 [self.currentDayVC deselect];
-                self.currentDayVC = dvc;
+                _currentDayVC = dvc;
                 [self.currentDayVC select];
                 break;
             }

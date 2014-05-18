@@ -33,7 +33,8 @@
 #import "SDFCalendarOSXDayView.h"
 #import "DateTools.h"
 
-static NSFont *kSDFCalendarOSXsetDayFontAndSize;
+static NSFont *kSDFCalendarOSXDayFontAndSize;
+static NSFont *kSDFCalendarOSXSelectedDayFontAndSize;
 static NSColor *kSDFCalendarOSXSelectedDayBackgroundColour;
 static NSColor *kSDFCalendarOSXTodayBackgroundColour;
 static NSColor *kSDFCalendarOSXCurrentMonthDayBackgroundColour;
@@ -43,12 +44,21 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 
 @interface SDFCalendarOSXDayViewController () <SDFCalendarOSXDayViewSelectionDelegate>
 
+/**
+ *  If the nib hasn't loaded yet, this allows selection to happen once the required items are loaded in the nib
+ */
+@property (nonatomic) BOOL needsSelection;
+
 @end
 
 @implementation SDFCalendarOSXDayViewController
 
 + (void) setDayFontAndSize:(NSFont *)font {
-    kSDFCalendarOSXsetDayFontAndSize = font;
+    kSDFCalendarOSXDayFontAndSize = font;
+}
+
++ (void) setSelectedDayFontAndSize:(NSFont *)font {
+    kSDFCalendarOSXSelectedDayFontAndSize = font;
 }
 
 + (void) setSelectedDayBackgroundColour:(NSColor *)colour {
@@ -90,6 +100,7 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
         if (!kSDFCalendarOSXNonCurrentMonthDayBackgroundColour) {
             kSDFCalendarOSXNonCurrentMonthDayBackgroundColour = GREY(191);
         }
+        self.needsSelection = NO;
     }
     return self;
 }
@@ -100,8 +111,8 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
     self.dayLabel.stringValue = @(self.date.day).stringValue;
     
     // Customisation
-    if (kSDFCalendarOSXsetDayFontAndSize) {
-        self.dayLabel.font = kSDFCalendarOSXsetDayFontAndSize;
+    if (kSDFCalendarOSXDayFontAndSize && !self.selected) {
+        self.dayLabel.font = kSDFCalendarOSXDayFontAndSize;
     }
     
     // Setup background
@@ -122,14 +133,43 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 }
 
 
+#pragma mark - Properties
+
+- (void) setDayLabel:(NSTextField *)dayLabel {
+    _dayLabel = dayLabel;
+    if (self.selectionView && self.needsSelection) {
+        [self select];
+    }
+}
+
+- (void) setSelectionView:(SDFCalendarOSXView *)selectionView {
+    _selectionView = selectionView;
+    if (self.dayLabel && self.needsSelection) {
+        [self select];
+    }
+}
+
 #pragma mark - Public
 
 - (void) select {
+    _selected = YES;
+    if (!self.selectionView || !self.dayLabel) {
+        self.needsSelection = YES;
+        return;
+    }
+    self.needsSelection = NO;
     [self.selectionView setBackgroundColour:kSDFCalendarOSXSelectedDayBackgroundColour];
+    if (kSDFCalendarOSXDayFontAndSize && kSDFCalendarOSXSelectedDayFontAndSize) {
+        self.dayLabel.font = kSDFCalendarOSXSelectedDayFontAndSize;
+    }
 }
 
 - (void) deselect {
+    _selected = NO;
     [self.selectionView setBackgroundColour:[NSColor clearColor]];
+    if (kSDFCalendarOSXDayFontAndSize && kSDFCalendarOSXSelectedDayFontAndSize) {
+        self.dayLabel.font = kSDFCalendarOSXDayFontAndSize;
+    }
 }
 
 #pragma mark - SDFCalendarOSXDayViewSelectionDelegate
