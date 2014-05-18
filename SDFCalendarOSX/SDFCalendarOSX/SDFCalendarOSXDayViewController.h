@@ -73,8 +73,8 @@
  *
  *  @param colour Colour to fill the selectionView with
  */
-+ (void) setSelectedDayBackgroundColour:(NSColor *)colour;
-+ (void) setTodayBackgroundColour:(NSColor *)colour;
++ (void) setSelectedDayHighlightBackgroundColour:(NSColor *)colour;
++ (void) setTodayHighlightBackgroundColour:(NSColor *)colour;
 /**
  *  When set this will fill the attached currentDayView.
  *
@@ -84,6 +84,7 @@
 + (void) setCurrentMonthDayLabelColour:(NSColor *)colour;
 + (void) setNonCurrentMonthDayBackgroundColour:(NSColor *)colour;
 + (void) setNonCurrentMonthDayLabelColour:(NSColor *)colour;
++ (void) setDayEventsBackgroundColour:(NSColor *)colour;
 
 #pragma mark - Public
 

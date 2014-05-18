@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDFCalendarOSXDayViewController">
             <connections>
+                <outlet property="dayEventsHighlightView" destination="E5O-4N-rKg" id="ca7-u7-H2c"/>
                 <outlet property="dayLabel" destination="LZZ-d6-s3X" id="c5U-Pc-Eux"/>
                 <outlet property="selectedDayHighlightView" destination="Xzh-kv-KSU" id="h5d-y6-AKf"/>
                 <outlet property="todayHighlightView" destination="HNF-XC-D94" id="Qf3-g0-kEe"/>

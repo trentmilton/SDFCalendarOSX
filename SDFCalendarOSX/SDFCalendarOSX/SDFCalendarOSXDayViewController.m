@@ -35,12 +35,13 @@
 
 static NSFont *kSDFCalendarOSXDayFontAndSize;
 static NSFont *kSDFCalendarOSXSelectedDayFontAndSize;
-static NSColor *kSDFCalendarOSXSelectedDayBackgroundColour;
-static NSColor *kSDFCalendarOSXTodayBackgroundColour;
+static NSColor *kSDFCalendarOSXSelectedDayHighlightBackgroundColour;
+static NSColor *kSDFCalendarOSXTodayHighlightBackgroundColour;
 static NSColor *kSDFCalendarOSXCurrentMonthDayBackgroundColour;
 static NSColor *kSDFCalendarOSXCurrentMonthDayLabelColour;
 static NSColor *kSDFCalendarOSXNonCurrentMonthDayBackgroundColour;
 static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
+static NSColor *kSDFCalendarOSXDayEventsBackgroundColour;
 
 @interface SDFCalendarOSXDayViewController () <SDFCalendarOSXDayViewSelectionDelegate>
 
@@ -61,12 +62,12 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
     kSDFCalendarOSXSelectedDayFontAndSize = font;
 }
 
-+ (void) setSelectedDayBackgroundColour:(NSColor *)colour {
-    kSDFCalendarOSXSelectedDayBackgroundColour = colour;
++ (void) setSelectedDayHighlightBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXSelectedDayHighlightBackgroundColour = colour;
 }
 
-+ (void) setTodayBackgroundColour:(NSColor *)colour {
-    kSDFCalendarOSXTodayBackgroundColour = colour;
++ (void) setTodayHighlightBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXTodayHighlightBackgroundColour = colour;
 }
 
 + (void) setCurrentMonthDayBackgroundColour:(NSColor *)colour {
@@ -83,6 +84,10 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 
 + (void) setNonCurrentMonthDayLabelColour:(NSColor *)colour {
     kSDFCalendarOSXNonCurrentMonthDayLabelColour = colour;
+}
+
++ (void) setDayEventsBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXDayEventsBackgroundColour = colour;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -118,12 +123,20 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
     // Set current day highlight if needed
     if (self.date.isToday) {
         // Only set a background colour if provided
-        if (kSDFCalendarOSXTodayBackgroundColour) {
-            [self.todayHighlightView setBackgroundColour:kSDFCalendarOSXTodayBackgroundColour];
+        if (kSDFCalendarOSXTodayHighlightBackgroundColour) {
+            [self.todayHighlightView setBackgroundColour:kSDFCalendarOSXTodayHighlightBackgroundColour];
         }
         [self.todayHighlightView setHidden:NO];
     } else {
         [self.todayHighlightView setHidden:YES];
+    }
+    
+    // Initally hide the day events highlight and set the fill colour if one is specified.
+    if (self.dayEventsHighlightView) {
+        [self.dayEventsHighlightView setHidden:YES];
+    }
+    if (kSDFCalendarOSXDayEventsBackgroundColour) {
+        [self.dayEventsHighlightView setBackgroundColour:kSDFCalendarOSXDayEventsBackgroundColour];
     }
     
     // Labels
@@ -172,8 +185,8 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
     }
     _selected = YES;
     // If an option is set use it, otherewise just show the selection view
-    if (kSDFCalendarOSXSelectedDayBackgroundColour) {
-        [self.selectedDayHighlightView setBackgroundColour:kSDFCalendarOSXSelectedDayBackgroundColour];
+    if (kSDFCalendarOSXSelectedDayHighlightBackgroundColour) {
+        [self.selectedDayHighlightView setBackgroundColour:kSDFCalendarOSXSelectedDayHighlightBackgroundColour];
     }
     [self.selectedDayHighlightView setHidden:NO];
     if (kSDFCalendarOSXDayFontAndSize && kSDFCalendarOSXSelectedDayFontAndSize) {
@@ -184,7 +197,7 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 - (void) deselect {
     _selected = NO;
     // Only clear the background if we have something to fill it with
-    if (kSDFCalendarOSXSelectedDayBackgroundColour) {
+    if (kSDFCalendarOSXSelectedDayHighlightBackgroundColour) {
         [self.selectedDayHighlightView setBackgroundColour:[NSColor clearColor]];
     }
     [self.selectedDayHighlightView setHidden:YES];
