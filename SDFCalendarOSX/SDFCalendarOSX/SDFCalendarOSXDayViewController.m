@@ -96,15 +96,22 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 
 - (void) awakeFromNib {
     ((SDFCalendarOSXDayView *)self.view).delegate = self;
+
+    self.dayLabel.stringValue = @(self.date.day).stringValue;
     
     // Customisation
     if (kSDFCalendarOSXsetDayFontAndSize) {
         self.dayLabel.font = kSDFCalendarOSXsetDayFontAndSize;
-        [self.view setNeedsDisplay:YES];
     }
     
-    self.dayLabel.stringValue = @(self.date.day).stringValue;
-    [self deselect];
+    // Setup background
+    SDFCalendarOSXView *view = (SDFCalendarOSXView *)self.view;
+    [view setBackgroundColour:kSDFCalendarOSXCurrentMonthDayBackgroundColour];
+    
+    // Set current day if needed
+    if (self.date.isToday) {
+        [self.currentDayView setBackgroundColour:kSDFCalendarOSXTodayBackgroundColour];
+    }
     
     // Labels
     if (self.currentMonth && kSDFCalendarOSXCurrentMonthDayLabelColour) {
@@ -118,19 +125,11 @@ static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 #pragma mark - Public
 
 - (void) select {
-    SDFCalendarOSXView *view = (SDFCalendarOSXView *)self.view;
-    [view setBackgroundColour:kSDFCalendarOSXSelectedDayBackgroundColour];
+    [self.selectionView setBackgroundColour:kSDFCalendarOSXSelectedDayBackgroundColour];
 }
 
 - (void) deselect {
-    SDFCalendarOSXView *view = (SDFCalendarOSXView *)self.view;
-    // A few options here for colour
-    if (self.currentMonth) {
-        [view setBackgroundColour:self.date.isToday ? kSDFCalendarOSXTodayBackgroundColour : kSDFCalendarOSXCurrentMonthDayBackgroundColour];
-    } else {
-        [view setBackgroundColour:kSDFCalendarOSXNonCurrentMonthDayBackgroundColour];
-    }
-
+    [self.selectionView setBackgroundColour:[NSColor clearColor]];
 }
 
 #pragma mark - SDFCalendarOSXDayViewSelectionDelegate

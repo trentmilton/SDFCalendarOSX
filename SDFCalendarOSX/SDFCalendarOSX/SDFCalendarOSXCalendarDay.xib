@@ -6,7 +6,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDFCalendarOSXDayViewController">
             <connections>
+                <outlet property="currentDayView" destination="HNF-XC-D94" id="JJ9-LS-jPu"/>
                 <outlet property="dayLabel" destination="LZZ-d6-s3X" id="c5U-Pc-Eux"/>
+                <outlet property="selectionView" destination="Xzh-kv-KSU" id="Z0b-3Y-S6d"/>
                 <outlet property="view" destination="kWD-sf-qyO" id="khR-ui-jft"/>
             </connections>
         </customObject>
@@ -16,6 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNF-XC-D94" userLabel="Current Day View" customClass="SDFCalendarOSXView">
+                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzh-kv-KSU" userLabel="Selection View" customClass="SDFCalendarOSXView">
+                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZZ-d6-s3X" userLabel="Day Label">
                     <rect key="frame" x="-2" y="24" width="74" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
