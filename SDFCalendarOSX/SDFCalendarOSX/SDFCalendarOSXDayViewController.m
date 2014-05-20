@@ -133,7 +133,7 @@ static NSColor *kSDFCalendarOSXDayEventsBackgroundColour;
     
     // Initally hide the day events highlight and set the fill colour if one is specified.
     if (self.dayEventsHighlightView) {
-        [self.dayEventsHighlightView setHidden:YES];
+        [self.dayEventsHighlightView setHidden:!self.hasDayEvents];
     }
     if (kSDFCalendarOSXDayEventsBackgroundColour) {
         [self.dayEventsHighlightView setBackgroundColour:kSDFCalendarOSXDayEventsBackgroundColour];

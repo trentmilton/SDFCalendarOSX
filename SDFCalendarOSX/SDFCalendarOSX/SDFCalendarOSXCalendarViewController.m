@@ -45,6 +45,7 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 
 @property (nonatomic, strong) NSArray *dayVCs;
 @property (nonatomic, strong) NSDate *currentMonthDate;
+@property (nonatomic, strong) NSArray *dayEventDates;
 
 @end
 
@@ -176,6 +177,16 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
                 [_currentDayVC select];
             }
             
+            // Day events highlight
+            BOOL match = NO;
+            for (NSDate *d in self.dayEventDates) {
+                // Ignore milliseconds
+                if ((int)d.timeIntervalSince1970 == (int)dvc.date.timeIntervalSince1970) {
+                    match = YES;
+                }
+            }
+            dvc.hasDayEvents = match;
+            
             CGRect dayRect = dvc.view.frame;
             
             // Set the size to ensure that it is 1/kSDFCalendarOSXGrid.x the width of the month view and 1/kSDFCalendarOSXGrid.y it's height. Creating a kSDFCalendarOSXGrid.
@@ -241,6 +252,16 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(sdfCalendarOSXCalendarDateSelected:)]) {
         [self.delegate sdfCalendarOSXCalendarDateSelected:selectedDate];
+    }
+}
+
+#pragma mark - Public
+
+- (void) highlightDayEventsForDates:(NSArray *)dates {
+    self.dayEventDates = dates;
+    // We only want this called after initial launch, so before that rely on the nib loading to handle this
+    if (self.dayVCs.count > 0) {
+        [self setupMonth];
     }
 }
 

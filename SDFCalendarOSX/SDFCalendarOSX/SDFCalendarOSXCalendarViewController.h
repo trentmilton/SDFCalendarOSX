@@ -65,6 +65,10 @@
 + (void) setMonthDayNamesLabelColour:(NSColor *)colour;
 + (void) setMonthDayNamesFont:(NSFont *)font;
 
+#pragma mark - Public
+
+- (void) highlightDayEventsForDates:(NSArray *)dates;
+
 #pragma mark - Actions
 
 - (IBAction) previousMonth:(id)sender;
