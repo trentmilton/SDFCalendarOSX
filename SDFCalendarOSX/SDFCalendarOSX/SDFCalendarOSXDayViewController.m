@@ -42,6 +42,7 @@ static NSColor *kSDFCalendarOSXCurrentMonthDayLabelColour;
 static NSColor *kSDFCalendarOSXNonCurrentMonthDayBackgroundColour;
 static NSColor *kSDFCalendarOSXNonCurrentMonthDayLabelColour;
 static NSColor *kSDFCalendarOSXDayEventsBackgroundColour;
+static NSColor *kSDFCalendarOSXDayHighlightBackgroundColour;
 
 @interface SDFCalendarOSXDayViewController () <SDFCalendarOSXDayViewSelectionDelegate>
 
@@ -90,6 +91,10 @@ static NSColor *kSDFCalendarOSXDayEventsBackgroundColour;
     kSDFCalendarOSXDayEventsBackgroundColour = colour;
 }
 
++ (void) setDayHighlightBackgroundColour:(NSColor *)colour {
+    kSDFCalendarOSXDayHighlightBackgroundColour = colour;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -109,8 +114,11 @@ static NSColor *kSDFCalendarOSXDayEventsBackgroundColour;
     }
     
     // Setup background
-    SDFCalendarOSXView *view = (SDFCalendarOSXView *)self.view;
+    SDFCalendarOSXDayView *view = (SDFCalendarOSXDayView *)self.view;
     [view setBackgroundColour:kSDFCalendarOSXCurrentMonthDayBackgroundColour];
+    
+    // Highlight for hover
+    view.highlightBackgroundColour = kSDFCalendarOSXDayHighlightBackgroundColour;
     
     // On first load the nib won't be loaded so the select will save a callback for the awake fromNib to select
     if (self.needsSelection) {

@@ -30,12 +30,39 @@
 
 #import "SDFCalendarOSXDayView.h"
 
-@implementation SDFCalendarOSXDayView
+@implementation SDFCalendarOSXDayView {
+    NSTrackingArea *trackingArea;
+    NSColor *originalBackgroundColour;
+}
+
+- (void) updateTrackingAreas {
+    if (!self.highlightBackgroundColour) return;
+    
+    if (trackingArea != nil) {
+        [self removeTrackingArea:trackingArea];
+    }
+    
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                 options:opts
+                                                   owner:self
+                                                userInfo:nil];
+    [self addTrackingArea:trackingArea];
+}
 
 - (void) mouseDown:(NSEvent *)theEvent {
     if (self.delegate && [self.delegate respondsToSelector:@selector(sdfCalendarOSXDayViewSelected)]) {
         [self.delegate sdfCalendarOSXDayViewSelected];
     }
+}
+
+- (void) mouseEntered:(NSEvent *)theEvent {
+    originalBackgroundColour = self.backgroundColour;
+    self.backgroundColour = self.highlightBackgroundColour;
+}
+
+- (void) mouseExited:(NSEvent *)theEvent {
+    self.backgroundColour = originalBackgroundColour;
 }
 
 @end

@@ -30,12 +30,6 @@
 
 #import "SDFCalendarOSXView.h"
 
-@interface SDFCalendarOSXView ()
-
-@property (nonatomic, strong) NSColor *backgroundColour;
-
-@end
-
 @implementation SDFCalendarOSXView
 
 - (void) drawRect:(NSRect)dirtyRect {

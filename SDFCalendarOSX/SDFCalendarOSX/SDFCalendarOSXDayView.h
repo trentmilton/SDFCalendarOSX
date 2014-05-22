@@ -46,5 +46,9 @@
 
 @property (nonatomic, weak) IBOutlet NSTextField *dayLabel;
 @property (nonatomic, strong) id <SDFCalendarOSXDayViewSelectionDelegate> delegate;
+/**
+ *  If this is not set no highlight will happen.
+ */
+@property (nonatomic, strong) NSColor *highlightBackgroundColour;
 
 @end

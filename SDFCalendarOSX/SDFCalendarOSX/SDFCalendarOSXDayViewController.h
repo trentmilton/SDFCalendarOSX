@@ -85,6 +85,12 @@
 + (void) setNonCurrentMonthDayBackgroundColour:(NSColor *)colour;
 + (void) setNonCurrentMonthDayLabelColour:(NSColor *)colour;
 + (void) setDayEventsBackgroundColour:(NSColor *)colour;
+/**
+ *  The colour to use when hovering over day. If not set no hover will happen.
+ *
+ *  @param colour Hover highlight colour.
+ */
++ (void) setDayHighlightBackgroundColour:(NSColor *)colour;
 
 #pragma mark - Public
 

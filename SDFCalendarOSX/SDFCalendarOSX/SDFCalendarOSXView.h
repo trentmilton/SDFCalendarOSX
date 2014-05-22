@@ -33,6 +33,8 @@
  */
 @interface SDFCalendarOSXView : NSView
 
+@property (nonatomic, strong) NSColor *backgroundColour;
+
 /**
  *  Set the NSViews background colour. If nil colour provided NSClear will be used.
  *
