@@ -206,7 +206,7 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
     }
     
     // Month / Year labels
-    self.monthLabel.stringValue = [self.currentMonthDate formattedDateWithFormat:@"MMM"];
+    self.monthLabel.stringValue = [self.currentMonthDate formattedDateWithFormat:@"MMMM"];
     self.yearLabel.stringValue = @(self.currentMonthDate.year).stringValue;
     self.dayVCs = [dvcs copy];
 }

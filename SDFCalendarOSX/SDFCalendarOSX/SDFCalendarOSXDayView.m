@@ -57,11 +57,13 @@
 }
 
 - (void) mouseEntered:(NSEvent *)theEvent {
+    if (!self.highlightBackgroundColour) return;
     originalBackgroundColour = self.backgroundColour;
     self.backgroundColour = self.highlightBackgroundColour;
 }
 
 - (void) mouseExited:(NSEvent *)theEvent {
+    if (!self.highlightBackgroundColour || !originalBackgroundColour) return;
     self.backgroundColour = originalBackgroundColour;
 }
 
