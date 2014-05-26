@@ -94,6 +94,7 @@
 
 #pragma mark - Public
 
+- (void) setup;
 - (void) select;
 - (void) deselect;
 

@@ -50,7 +50,7 @@
 @property (nonatomic, weak) IBOutlet NSButton *previousMonthButton;
 @property (nonatomic, weak) IBOutlet NSButton *nextMonthButton;
 @property (nonatomic, weak) IBOutlet SDFCalendarOSXMonthView *monthView;
-@property (nonatomic, readonly) SDFCalendarOSXDayViewController *currentDayVC;
+
 /**
  *  Should be an NSView with labels inside it. Anything else and the customisations won't be applied to the labels.
  */

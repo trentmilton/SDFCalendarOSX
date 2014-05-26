@@ -43,9 +43,10 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 
 @interface SDFCalendarOSXCalendarViewController ()
 
-@property (nonatomic, strong) NSArray *dayVCs;
+@property (nonatomic, strong) NSMutableArray *dayVCs;
 @property (nonatomic, strong) NSDate *currentMonthDate;
 @property (nonatomic, strong) NSArray *dayEventDates;
+@property (nonatomic, strong) NSDate *selectedDate;
 
 @end
 
@@ -128,17 +129,14 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
     [self setupMonth];
 }
 
-#warning TODO - Look for memory leak
-
 - (void) setupMonth {
     // Some warnings to make sure the below works as expected
     NSAssert((int)self.monthView.frame.size.width % (int)kSDFCalendarOSXGrid.x == 0, @"SDFCalendarOSXMonthView width must be a multiple of kSDFCalendarOSXGrid.x");
     NSAssert((int)self.monthView.frame.size.height % (int)kSDFCalendarOSXGrid.y == 0, @"SDFCalendarOSXMonthView height must be a multiple of kSDFCalendarOSXGrid.y");
     
-    // Resets
-    self.dayVCs = nil;
-    for (NSView *sv in [self.monthView.subviews copy]) {
-        [sv removeFromSuperview];
+    BOOL firstRun = !self.dayVCs;
+    if (firstRun) {
+        self.dayVCs = [NSMutableArray new];
     }
     
     NSDate *today = [NSDate new];
@@ -161,22 +159,25 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
     
     // Fill the month view with as a kSDFCalendarOSXGrid
     // Load them into the view from the top left then shift across right. Move down and repeat from left to right until we reach the bottom right.
-    NSMutableArray *dvcs = [NSMutableArray new];
     CGSize daySize = CGSizeMake(self.monthView.frame.size.width / kSDFCalendarOSXGrid.x, self.monthView.frame.size.height / kSDFCalendarOSXGrid.y);
+    int i = 0;
     for (int y = 1; y <= kSDFCalendarOSXGrid.y; y ++) {
         for (int x = 0; x < kSDFCalendarOSXGrid.x; x ++) {
-            SDFCalendarOSXDayViewController *dvc = [[SDFCalendarOSXDayViewController alloc] initWithNibName:kSDFCalendarOSXCalendarDayNibName bundle:nil];
-            dvc.delegate = self;
+            SDFCalendarOSXDayViewController *dvc;
+            // Only make a new VC when first run
+            if (firstRun) {
+                dvc = [[SDFCalendarOSXDayViewController alloc] initWithNibName:kSDFCalendarOSXCalendarDayNibName bundle:nil];
+                dvc.delegate = self;
+            } else {
+                dvc = [self.dayVCs objectAtIndex:i];
+                NSLog(@"%@", dvc.date);
+            }
+            
             dvc.date = [currentGridDate copy];
             dvc.currentMonth = currentGridDate.month == self.currentMonthDate.month;
             
-            BOOL noCurrentDaySetAndToday = !self.currentDayVC && [currentGridDate isToday];
-            BOOL currentDaySetAndDateMatches = self.currentDayVC && [self.currentDayVC.date isEqualToDate:currentGridDate];
-            if (noCurrentDaySetAndToday || currentDaySetAndDateMatches) {
-                _currentDayVC = dvc;
-                [_currentDayVC select];
-            }
-            
+        
+       
             // Day events highlight
             BOOL match = NO;
             for (NSDate *d in self.dayEventDates) {
@@ -198,17 +199,35 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
             dayRect.origin = CGPointMake(dayX, dayY);
             // Finally set it back to the frame
             dvc.view.frame = dayRect;
-            [self.monthView addSubview:dvc.view];
+            dayRect = CGRectMake(0, 0, 0, 0);
+            
+            if (firstRun) {
+                [self.monthView addSubview:dvc.view];
+                [self.dayVCs addObject:dvc];
+            } else {
+                [dvc setup];
+            }
+            
+            BOOL noCurrentDaySetAndToday = !self.selectedDate && [currentGridDate isToday];
+            BOOL currentDaySetAndDateMatches = self.selectedDate && [self.selectedDate isEqualToDate:currentGridDate];
+            if (noCurrentDaySetAndToday || currentDaySetAndDateMatches) {
+                //                self.selec = dvc;
+                [dvc select];
+                NSLog(@"Selected");
+            } else {
+                [dvc deselect];
+                NSLog(@"Deselected");
+            }
             
             currentGridDate = [currentGridDate dateByAddingDays:1];
-            [dvcs addObject:dvc];
+            
+            i++;
         }
     }
     
     // Month / Year labels
     self.monthLabel.stringValue = [self.currentMonthDate formattedDateWithFormat:@"MMMM"];
     self.yearLabel.stringValue = @(self.currentMonthDate.year).stringValue;
-    self.dayVCs = [dvcs copy];
 }
 
 #pragma mark - Actions
@@ -226,32 +245,15 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 #pragma mark - SDFCalendarOSXDaySelectionDelegate
 
 - (void) sdfCalendarOSXDaySelected:(SDFCalendarOSXDayViewController *)dayViewController {
-    NSDate *selectedDate = [dayViewController.date copy];
+    self.selectedDate = [dayViewController.date copy];
     
-    if (dayViewController.currentMonth) {
-        [self.currentDayVC deselect];
-        _currentDayVC = dayViewController;
-        [self.currentDayVC select];
-    } else {
-        // Reset the date to start of the appropriate month
+    if (!dayViewController.currentMonth) {
         self.currentMonthDate = [self startOfMonthDate:dayViewController.date];
-        // Set the date to selected
-        [self setupMonth];
-        
-        // Search through the new VCs to select the date from the previous / next month
-        for (SDFCalendarOSXDayViewController *dvc in self.dayVCs) {
-            if ([dvc.date isEqualToDate:selectedDate]) {
-                [self.currentDayVC deselect];
-                _currentDayVC = dvc;
-                [self.currentDayVC select];
-                break;
-            }
-        }
-        
     }
-    
+
+    [self setupMonth];
     if (self.delegate && [self.delegate respondsToSelector:@selector(sdfCalendarOSXCalendarDateSelected:)]) {
-        [self.delegate sdfCalendarOSXCalendarDateSelected:selectedDate];
+        [self.delegate sdfCalendarOSXCalendarDateSelected:[self.selectedDate copy]];
     }
 }
 

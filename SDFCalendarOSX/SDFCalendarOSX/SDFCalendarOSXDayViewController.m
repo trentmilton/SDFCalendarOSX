@@ -104,8 +104,12 @@ static NSColor *kSDFCalendarOSXDayHighlightBackgroundColour;
 }
 
 - (void) awakeFromNib {
-    ((SDFCalendarOSXDayView *)self.view).delegate = self;
+    [self setup];
+}
 
+- (void) setup {
+    ((SDFCalendarOSXDayView *)self.view).delegate = self;
+    
     self.dayLabel.stringValue = @(self.date.day).stringValue;
     
     // Customisation
