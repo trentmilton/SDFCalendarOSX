@@ -52,236 +52,246 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 
 @implementation SDFCalendarOSXCalendarViewController
 
-+ (void) setCalendarDayNibName:(NSString *)nibName {
-    kSDFCalendarOSXCalendarDayNibName = nibName;
++ (void)setCalendarDayNibName:(NSString *)nibName
+{
+	kSDFCalendarOSXCalendarDayNibName = nibName;
 }
 
-+ (void) setHeaderBackgroundColour:(NSColor *)colour {
-    kSDFCalendarOSXHeaderBackgroundColour = colour;
++ (void)setHeaderBackgroundColour:(NSColor *)colour
+{
+	kSDFCalendarOSXHeaderBackgroundColour = colour;
 }
 
-+ (void) setHeaderLabelColour:(NSColor *)colour {
-    kSDFCalendarOSXHeaderLabelColour = colour;
++ (void)setHeaderLabelColour:(NSColor *)colour
+{
+	kSDFCalendarOSXHeaderLabelColour = colour;
 }
 
-+ (void) setHeaderFontAndSize:(NSFont *)font {
-    kSDFCalendarOSXHeaderFont = font;
++ (void)setHeaderFontAndSize:(NSFont *)font
+{
+	kSDFCalendarOSXHeaderFont = font;
 }
 
-+ (void) setMonthDayNamesBackgroundColour:(NSColor *)colour {
-    kSDFCalendarOSXMonthDayNamesBackgroundColour = colour;
++ (void)setMonthDayNamesBackgroundColour:(NSColor *)colour
+{
+	kSDFCalendarOSXMonthDayNamesBackgroundColour = colour;
 }
 
-+ (void) setMonthDayNamesLabelColour:(NSColor *)colour {
-    kSDFCalendarOSXMonthDayNamesLabelColour = colour;
++ (void)setMonthDayNamesLabelColour:(NSColor *)colour
+{
+	kSDFCalendarOSXMonthDayNamesLabelColour = colour;
 }
 
-+ (void) setMonthDayNamesFont:(NSFont *)font {
-    kSDFCalendarOSXMonthDayNamesFont = font;
++ (void)setMonthDayNamesFont:(NSFont *)font
+{
+	kSDFCalendarOSXMonthDayNamesFont = font;
 }
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if (self) {
+	}
+	return self;
 }
 
-- (void) awakeFromNib {
-    
-    // Background
-    self.view.wantsLayer = YES;
-    self.view.layer.backgroundColor = [NSColor grayColor].CGColor;
-    
-    self.currentMonthDate = [self startOfMonthDate:[NSDate new]];
-    
-    // Customisation
-    if (self.headerView) {
-        if (kSDFCalendarOSXHeaderBackgroundColour) {
-            [self.headerView setBackgroundColour:kSDFCalendarOSXHeaderBackgroundColour];
-        }
-        if (kSDFCalendarOSXHeaderLabelColour) {
-            self.yearLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
-            self.monthLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
-        }
-        if (kSDFCalendarOSXHeaderFont) {
-            self.yearLabel.font = kSDFCalendarOSXHeaderFont;
-            self.monthLabel.font = kSDFCalendarOSXHeaderFont;
-        }
-    }
-    
-    if (self.monthDayNamesView) {
-        if (kSDFCalendarOSXMonthDayNamesBackgroundColour) {
-            [self.monthDayNamesView setBackgroundColour:kSDFCalendarOSXMonthDayNamesBackgroundColour];
-        }
-        for (id sv in self.monthDayNamesView.subviews) {
-            if ([sv isKindOfClass:[NSTextField class]]) {
-                if (kSDFCalendarOSXMonthDayNamesLabelColour) {
-                    ((NSTextView *)sv).textColor = kSDFCalendarOSXMonthDayNamesLabelColour;
-                }
-                if (kSDFCalendarOSXHeaderFont) {
-                    ((NSTextView *)sv).font = kSDFCalendarOSXHeaderFont;
-                }
-            }
-        }
-    }
-    
-    [self setupMonth];
+- (void)awakeFromNib
+{
+
+	// Background
+	self.view.wantsLayer = YES;
+	self.view.layer.backgroundColor = [NSColor grayColor].CGColor;
+
+	self.currentMonthDate = [self startOfMonthDate:[NSDate new]];
+
+	// Customisation
+	if (self.headerView) {
+		if (kSDFCalendarOSXHeaderBackgroundColour) {
+			[self.headerView setBackgroundColour:kSDFCalendarOSXHeaderBackgroundColour];
+		}
+		if (kSDFCalendarOSXHeaderLabelColour) {
+			self.yearLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
+			self.monthLabel.textColor = kSDFCalendarOSXHeaderLabelColour;
+		}
+		if (kSDFCalendarOSXHeaderFont) {
+			self.yearLabel.font = kSDFCalendarOSXHeaderFont;
+			self.monthLabel.font = kSDFCalendarOSXHeaderFont;
+		}
+	}
+
+	if (self.monthDayNamesView) {
+		if (kSDFCalendarOSXMonthDayNamesBackgroundColour) {
+			[self.monthDayNamesView setBackgroundColour:kSDFCalendarOSXMonthDayNamesBackgroundColour];
+		}
+		for (id sv in self.monthDayNamesView.subviews) {
+			if ([sv isKindOfClass:[NSTextField class]]) {
+				if (kSDFCalendarOSXMonthDayNamesLabelColour) {
+					((NSTextView *)sv).textColor = kSDFCalendarOSXMonthDayNamesLabelColour;
+				}
+				if (kSDFCalendarOSXHeaderFont) {
+					((NSTextView *)sv).font = kSDFCalendarOSXHeaderFont;
+				}
+			}
+		}
+	}
+
+	[self setupMonth];
 }
 
-- (void) setupMonth {
-    // Some warnings to make sure the below works as expected
-    NSAssert((int)self.monthView.frame.size.width % (int)kSDFCalendarOSXGrid.x == 0, @"SDFCalendarOSXMonthView width must be a multiple of kSDFCalendarOSXGrid.x");
-    NSAssert((int)self.monthView.frame.size.height % (int)kSDFCalendarOSXGrid.y == 0, @"SDFCalendarOSXMonthView height must be a multiple of kSDFCalendarOSXGrid.y");
-    
-    BOOL firstRun = !self.dayVCs;
-    if (firstRun) {
-        self.dayVCs = [NSMutableArray new];
-    }
-    
-    NSDate *today = [NSDate new];
-    today = [NSDate new];
-    today = [today dateBySubtractingHours:today.hour];
-    today = [today dateBySubtractingMinutes:today.minute];
-    today = [today dateBySubtractingSeconds:today.second];
-    
-    // We need to get the starting day for the grid
-    // Work out what the first day of the month was in terms of the weekday
-    // Reset to midnight so the dates look nice on debug printout
-    NSDate *som = [self.currentMonthDate dateBySubtractingDays:self.currentMonthDate.day - 1];
-    // What is the start of month day of the week (Sunday = 0)
-    NSInteger somdow = som.weekday;
-    if (somdow == 1) {
-        somdow = 8;
-    }
-    // Whatever it is is how far we want to go back from the start of the month to show on the first grid entry
-    NSDate *currentGridDate = [som dateBySubtractingDays:somdow - 1];
-    
-    // Fill the month view with as a kSDFCalendarOSXGrid
-    // Load them into the view from the top left then shift across right. Move down and repeat from left to right until we reach the bottom right.
-    CGSize daySize = CGSizeMake(self.monthView.frame.size.width / kSDFCalendarOSXGrid.x, self.monthView.frame.size.height / kSDFCalendarOSXGrid.y);
-    int i = 0;
-    for (int y = 1; y <= kSDFCalendarOSXGrid.y; y ++) {
-        for (int x = 0; x < kSDFCalendarOSXGrid.x; x ++) {
-            SDFCalendarOSXDayViewController *dvc;
-            // Only make a new VC when first run
-            if (firstRun) {
-                dvc = [[SDFCalendarOSXDayViewController alloc] initWithNibName:kSDFCalendarOSXCalendarDayNibName bundle:nil];
-                dvc.delegate = self;
-            } else {
-                dvc = [self.dayVCs objectAtIndex:i];
-                NSLog(@"%@", dvc.date);
-            }
-            
-            dvc.date = [currentGridDate copy];
-            dvc.currentMonth = currentGridDate.month == self.currentMonthDate.month;
-            
-        
-       
-            // Day events highlight
-            BOOL match = NO;
-            for (NSDate *d in self.dayEventDates) {
-                // Ignore milliseconds
-                if ((int)d.timeIntervalSince1970 == (int)dvc.date.timeIntervalSince1970) {
-                    match = YES;
-                }
-            }
-            dvc.hasDayEvents = match;
-            
-            CGRect dayRect = dvc.view.frame;
-            
-            // Set the size to ensure that it is 1/kSDFCalendarOSXGrid.x the width of the month view and 1/kSDFCalendarOSXGrid.y it's height. Creating a kSDFCalendarOSXGrid.
-            dayRect.size = daySize;
-            
-            // Work out it's position
-            CGFloat dayX = daySize.width * x;
-            CGFloat dayY = self.monthView.frame.size.height - daySize.height * y;
-            dayRect.origin = CGPointMake(dayX, dayY);
-            // Finally set it back to the frame
-            dvc.view.frame = dayRect;
-            dayRect = CGRectMake(0, 0, 0, 0);
-            
-            if (firstRun) {
-                [self.monthView addSubview:dvc.view];
-                [self.dayVCs addObject:dvc];
-            } else {
-                [dvc setup];
-            }
-            
-            BOOL noCurrentDaySetAndToday = !self.selectedDate && [currentGridDate isToday];
-            BOOL currentDaySetAndDateMatches = self.selectedDate && [self.selectedDate isEqualToDate:currentGridDate];
-            if (noCurrentDaySetAndToday || currentDaySetAndDateMatches) {
-                //                self.selec = dvc;
-                [dvc select];
-                NSLog(@"Selected");
-            } else {
-                [dvc deselect];
-                NSLog(@"Deselected");
-            }
-            
-            currentGridDate = [currentGridDate dateByAddingDays:1];
-            
-            i++;
-        }
-    }
-    
-    // Month / Year labels
-    self.monthLabel.stringValue = [self.currentMonthDate formattedDateWithFormat:@"MMMM"];
-    self.yearLabel.stringValue = @(self.currentMonthDate.year).stringValue;
+- (void)setupMonth
+{
+	// Some warnings to make sure the below works as expected
+	NSAssert((int)self.monthView.frame.size.width % (int)kSDFCalendarOSXGrid.x == 0, @"SDFCalendarOSXMonthView width must be a multiple of kSDFCalendarOSXGrid.x");
+	NSAssert((int)self.monthView.frame.size.height % (int)kSDFCalendarOSXGrid.y == 0, @"SDFCalendarOSXMonthView height must be a multiple of kSDFCalendarOSXGrid.y");
+
+	BOOL firstRun = !self.dayVCs;
+	if (firstRun) {
+		self.dayVCs = [NSMutableArray new];
+	}
+
+	NSDate *today = [NSDate new];
+	today = [NSDate new];
+	today = [today dateBySubtractingHours:today.hour];
+	today = [today dateBySubtractingMinutes:today.minute];
+	today = [today dateBySubtractingSeconds:today.second];
+
+	// We need to get the starting day for the grid
+	// Work out what the first day of the month was in terms of the weekday
+	// Reset to midnight so the dates look nice on debug printout
+	NSDate *som = [self.currentMonthDate dateBySubtractingDays:self.currentMonthDate.day - 1];
+	// What is the start of month day of the week (Sunday = 0)
+	NSInteger somdow = som.weekday;
+	if (somdow == 1) {
+		somdow = 8;
+	}
+	// Whatever it is is how far we want to go back from the start of the month to show on the first grid entry
+	NSDate *currentGridDate = [som dateBySubtractingDays:somdow - 1];
+
+	// Fill the month view with as a kSDFCalendarOSXGrid
+	// Load them into the view from the top left then shift across right. Move down and repeat from left to right until we reach the bottom right.
+	CGSize daySize = CGSizeMake(self.monthView.frame.size.width / kSDFCalendarOSXGrid.x, self.monthView.frame.size.height / kSDFCalendarOSXGrid.y);
+	int i = 0;
+	for (int y = 1; y <= kSDFCalendarOSXGrid.y; y++) {
+		for (int x = 0; x < kSDFCalendarOSXGrid.x; x++) {
+			SDFCalendarOSXDayViewController *dvc;
+			// Only make a new VC when first run
+			if (firstRun) {
+				dvc = [[SDFCalendarOSXDayViewController alloc] initWithNibName:kSDFCalendarOSXCalendarDayNibName bundle:nil];
+				dvc.delegate = self;
+			} else {
+				dvc = [self.dayVCs objectAtIndex:i];
+			}
+
+			dvc.date = [currentGridDate copy];
+			dvc.currentMonth = currentGridDate.month == self.currentMonthDate.month;
+
+			// Day events highlight
+			BOOL match = NO;
+			for (NSDate *d in self.dayEventDates) {
+				// Ignore milliseconds
+				if ((int)d.timeIntervalSince1970 == (int)dvc.date.timeIntervalSince1970) {
+					match = YES;
+				}
+			}
+			dvc.hasDayEvents = match;
+
+			CGRect dayRect = dvc.view.frame;
+
+			// Set the size to ensure that it is 1/kSDFCalendarOSXGrid.x the width of the month view and 1/kSDFCalendarOSXGrid.y it's height. Creating a kSDFCalendarOSXGrid.
+			dayRect.size = daySize;
+
+			// Work out it's position
+			CGFloat dayX = daySize.width * x;
+			CGFloat dayY = self.monthView.frame.size.height - daySize.height * y;
+			dayRect.origin = CGPointMake(dayX, dayY);
+			// Finally set it back to the frame
+			dvc.view.frame = dayRect;
+			dayRect = CGRectMake(0, 0, 0, 0);
+
+			if (firstRun) {
+				[self.monthView addSubview:dvc.view];
+				[self.dayVCs addObject:dvc];
+			} else {
+				[dvc setup];
+			}
+
+			BOOL noCurrentDaySetAndToday = !self.selectedDate && [currentGridDate isToday];
+			BOOL currentDaySetAndDateMatches = self.selectedDate && [self.selectedDate isEqualToDate:currentGridDate];
+			if (noCurrentDaySetAndToday || currentDaySetAndDateMatches) {
+				[dvc select];
+			} else {
+				[dvc deselect];
+			}
+
+			currentGridDate = [currentGridDate dateByAddingDays:1];
+
+			i++;
+		}
+	}
+
+	// Month / Year labels
+	self.monthLabel.stringValue = [self.currentMonthDate formattedDateWithFormat:@"MMMM"];
+	self.yearLabel.stringValue = @(self.currentMonthDate.year).stringValue;
 }
 
 #pragma mark - Actions
 
-- (IBAction) previousMonth:(id)sender {
-    self.currentMonthDate = [self.currentMonthDate dateBySubtractingMonths:1];
-    [self setupMonth];
+- (IBAction)previousMonth:(id)sender
+{
+	self.currentMonthDate = [self.currentMonthDate dateBySubtractingMonths:1];
+	[self setupMonth];
 }
 
-- (IBAction) nextMonth:(id)sender {
-    self.currentMonthDate = [self.currentMonthDate dateByAddingMonths:1];
-    [self setupMonth];
+- (IBAction)nextMonth:(id)sender
+{
+	self.currentMonthDate = [self.currentMonthDate dateByAddingMonths:1];
+	[self setupMonth];
 }
 
 #pragma mark - SDFCalendarOSXDaySelectionDelegate
 
-- (void) sdfCalendarOSXDaySelected:(SDFCalendarOSXDayViewController *)dayViewController {
-    self.selectedDate = [dayViewController.date copy];
-    
-    if (!dayViewController.currentMonth) {
-        self.currentMonthDate = [self startOfMonthDate:dayViewController.date];
-    }
+- (void)sdfCalendarOSXDaySelected:(SDFCalendarOSXDayViewController *)dayViewController
+{
+	self.selectedDate = [dayViewController.date copy];
 
-    [self setupMonth];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(sdfCalendarOSXCalendarDateSelected:)]) {
-        [self.delegate sdfCalendarOSXCalendarDateSelected:[self.selectedDate copy]];
-    }
+	if (!dayViewController.currentMonth) {
+		self.currentMonthDate = [self startOfMonthDate:dayViewController.date];
+	}
+
+	[self setupMonth];
+	if (self.delegate && [self.delegate respondsToSelector:@selector(sdfCalendarOSXCalendarDateSelected:)]) {
+		[self.delegate sdfCalendarOSXCalendarDateSelected:[self.selectedDate copy]];
+	}
 }
 
 #pragma mark - Public
 
-- (void) highlightDayEventsForDates:(NSArray *)dates {
-    self.dayEventDates = dates;
-    // We only want this called after initial launch, so before that rely on the nib loading to handle this
-    if (self.dayVCs.count > 0) {
-        [self setupMonth];
-    }
+- (void)highlightDayEventsForDates:(NSArray *)dates
+{
+	self.dayEventDates = dates;
+	// We only want this called after initial launch, so before that rely on the nib loading to handle this
+	if (self.dayVCs.count > 0) {
+		[self setupMonth];
+	}
 }
 
 #pragma mark - Private
 
-- (NSDate *) startOfMonthDate:(NSDate *)date {
-    NSDate *tempDate = [date copy];
-    tempDate = [tempDate dateBySubtractingDays:tempDate.day - 1];
-    tempDate = [self startOfDayDate:tempDate];
-    return tempDate;
+- (NSDate *)startOfMonthDate:(NSDate *)date
+{
+	NSDate *tempDate = [date copy];
+	tempDate = [tempDate dateBySubtractingDays:tempDate.day - 1];
+	tempDate = [self startOfDayDate:tempDate];
+	return tempDate;
 }
 
-- (NSDate *) startOfDayDate:(NSDate *)date {
-    NSDate *tempDate = [date copy];
-    tempDate = [tempDate dateBySubtractingHours:tempDate.hour];
-    tempDate = [tempDate dateBySubtractingMinutes:tempDate.minute];
-    tempDate = [tempDate dateBySubtractingSeconds:tempDate.second];
-    return tempDate;
+- (NSDate *)startOfDayDate:(NSDate *)date
+{
+	NSDate *tempDate = [date copy];
+	tempDate = [tempDate dateBySubtractingHours:tempDate.hour];
+	tempDate = [tempDate dateBySubtractingMinutes:tempDate.minute];
+	tempDate = [tempDate dateBySubtractingSeconds:tempDate.second];
+	return tempDate;
 }
 
 @end

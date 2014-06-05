@@ -37,6 +37,6 @@
  */
 @interface SDFCalendarOSX : NSObject
 
-+ (SDFCalendarOSXCalendarViewController *) instance;
++ (SDFCalendarOSXCalendarViewController *)instance;
 
 @end

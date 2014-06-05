@@ -32,9 +32,9 @@
 
 @implementation SDFCalendarOSX
 
-+ (SDFCalendarOSXCalendarViewController *) instance {
-  return [[SDFCalendarOSXCalendarViewController alloc] initWithNibName:@"SDFCalendarOSXCalendar" bundle:nil];
++ (SDFCalendarOSXCalendarViewController *)instance
+{
+	return [[SDFCalendarOSXCalendarViewController alloc] initWithNibName:@"SDFCalendarOSXCalendar" bundle:nil];
 }
 
 @end
-
