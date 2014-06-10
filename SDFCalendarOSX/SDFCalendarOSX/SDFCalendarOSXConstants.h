@@ -28,10 +28,10 @@
 //  Copyright (c) 2014 shaydes.dsgn. All rights reserved.
 //
 
-#define RGB(r, g, b)                                        [NSColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
-#define GREY(v)                                             RGB(v, v, v)
+#define RGB(r, g, b) [NSColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1]
+#define GREY(v) RGB(v, v, v)
 
 /**
  *  The layout of the grid. This shouldn't really be touched unless you know what your doing. Especially the x value as this is the days.
  */
-#define kSDFCalendarOSXGrid                                 CGPointMake(7,6)
+#define kSDFCalendarOSXGrid CGPointMake(7, 6)
