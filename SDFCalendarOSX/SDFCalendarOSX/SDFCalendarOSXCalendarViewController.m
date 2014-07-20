@@ -100,7 +100,8 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 
 	// Background
 	self.view.wantsLayer = YES;
-	self.view.layer.backgroundColor = [NSColor grayColor].CGColor;
+    // User header for background if available
+	self.view.layer.backgroundColor = kSDFCalendarOSXHeaderBackgroundColour ? kSDFCalendarOSXHeaderBackgroundColour.CGColor : [NSColor grayColor].CGColor;
 
 	self.currentMonthDate = [self startOfMonthDate:[NSDate new]];
 
@@ -128,8 +129,8 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 				if (kSDFCalendarOSXMonthDayNamesLabelColour) {
 					((NSTextView *)sv).textColor = kSDFCalendarOSXMonthDayNamesLabelColour;
 				}
-				if (kSDFCalendarOSXHeaderFont) {
-					((NSTextView *)sv).font = kSDFCalendarOSXHeaderFont;
+				if (kSDFCalendarOSXMonthDayNamesFont) {
+					((NSTextView *)sv).font = kSDFCalendarOSXMonthDayNamesFont;
 				}
 			}
 		}
