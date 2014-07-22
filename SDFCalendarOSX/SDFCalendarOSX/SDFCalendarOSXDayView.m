@@ -58,6 +58,7 @@
 
 - (void) mouseEntered:(NSEvent *)theEvent {
     if (!self.highlightBackgroundColour) return;
+    if (self.window.sheets && self.window.sheets.count > 0) return;
     originalBackgroundColour = self.backgroundColour;
     self.backgroundColour = self.highlightBackgroundColour;
 }
