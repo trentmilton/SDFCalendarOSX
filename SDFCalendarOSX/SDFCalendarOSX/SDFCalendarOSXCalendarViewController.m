@@ -150,12 +150,6 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 		self.dayVCs = [NSMutableArray new];
 	}
 
-	NSDate *today = [NSDate new];
-	today = [NSDate new];
-	today = [today dateBySubtractingHours:today.hour];
-	today = [today dateBySubtractingMinutes:today.minute];
-	today = [today dateBySubtractingSeconds:today.second];
-
 	// We need to get the starting day for the grid
 	// Work out what the first day of the month was in terms of the weekday
 	// Reset to midnight so the dates look nice on debug printout
@@ -207,7 +201,6 @@ static NSFont *kSDFCalendarOSXMonthDayNamesFont;
 			dayRect.origin = CGPointMake(dayX, dayY);
 			// Finally set it back to the frame
 			dvc.view.frame = dayRect;
-			dayRect = CGRectMake(0, 0, 0, 0);
 
 			if (firstRun) {
 				[self.monthView addSubview:dvc.view];
